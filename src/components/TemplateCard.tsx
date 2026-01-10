@@ -46,6 +46,7 @@ const TemplateCard = ({ title, titleKey, description, icon: Icon, color, onClick
           </p>
         </div>
         
+        
         {/* Arrow indicator */}
         <motion.div 
           className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity"
