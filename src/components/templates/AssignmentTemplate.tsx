@@ -32,11 +32,9 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
           
           {/* Header */}
           <div className="text-center space-y-3 mb-6 pt-4">
-            <h1 className="text-2xl font-display font-bold text-[#1a365d] uppercase tracking-widest">
-              {data.universityName}
-            </h1>
+            <img src="/wub.png" alt="wub-logo" />
             {/* <p className="text-base text-[#2d3748]">{facultyName}</p> */}
-            <p className="text-sm text-[#718096]">{departmentName}</p>
+            <h2 className="text-xl text-[#718096]">{departmentName}</h2>
           </div>
 
           {/* Decorative divider */}
@@ -48,11 +46,11 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
 
           {/* Assignment Badge */}
           <div className="text-center my-6">
-            <div className="inline-block px-12 py-4 bg-[#1a365d] text-white">
-              <h2 className="text-xl font-display font-bold tracking-wider">
+            <div className="inline-flex px-12 py-4 bg-[#1a365d] text-white">
+              <h2 className="text-xl font-display font-bold tracking-widerwub">
                 {isBengali ? 'অ্যাসাইনমেন্ট' : 'ASSIGNMENT'}
               </h2>
-              <p className="text-2xl font-bold mt-1 text-[#d69e2e]">#{data.assignmentNo}</p>
+              <p className="text-2xl font-bold text-[#d69e2e]">#{data.assignmentNo}</p>
             </div>
           </div>
 
@@ -266,12 +264,10 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
     >
       <div className="cover-page-border h-full p-8 flex flex-col">
         {/* Header */}
-        <div className="text-center space-y-2 mb-8">
-          <h1 className="text-2xl font-display font-bold text-[#1a365d] uppercase tracking-wide">
-            {data.universityName}
-          </h1>
+        <div className="justify-center flex flex-col space-y-2 mb-8">
+              <img src="/wub.png" alt="wub-logo"/>
           {/* <p className="text-lg text-[#4a5568]">{facultyName}</p> */}
-          <p className="text-base text-[#718096]">{departmentName}</p>
+          <h2 className="text-center text-xl text-[#718096]">{departmentName}</h2>
         </div>
 
         {/* Divider */}
@@ -282,7 +278,7 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
         </div>
 
         {/* Assignment Info */}
-        <div className="text-center space-y-4 my-8">
+        <div className="text-center space-y-4 my-4">
           <h2 className="text-xl font-display font-semibold text-[#2d3748]">
             {isBengali ? 'অ্যাসাইনমেন্ট' : 'ASSIGNMENT'}
           </h2>
@@ -294,29 +290,29 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
         </div>
 
         {/* Course Details */}
-        <div className="bg-[#f7fafc] rounded-lg p-6 my-6">
+        <div className="bg-[#f7fafc] rounded-lg p-2 my-6">
           <table className="w-full text-left">
             <tbody>
-              <tr>
-                <td className="py-2 font-medium text-[#718096] w-1/3">
-                  {isBengali ? 'কোর্স কোড' : 'Course Code'}:
-                </td>
-                <td className="py-2 text-[#2d3748] font-semibold">{data.courseCode}</td>
-              </tr>
-              <tr>
-                <td className="py-2 font-medium text-[#718096]">
-                  {isBengali ? 'কোর্স শিরোনাম' : 'Course Title'}:
-                </td>
-                <td className="py-2 text-[#2d3748] font-semibold">{data.courseTitle}</td>
-              </tr>
               {data.assignmentTitle && (
                 <tr>
-                  <td className="py-2 font-medium text-[#718096]">
+                  <td className="py-2 font-semibold text-[#718096]">
                     {isBengali ? 'বিষয়' : 'Topic'}:
                   </td>
                   <td className="py-2 text-[#2d3748] font-semibold">{data.assignmentTitle}</td>
                 </tr>
               )}
+              <tr>
+                <td className="py-2 font-semibold text-[#718096] w-1/5">
+                  {isBengali ? 'কোর্স কোড' : 'Course Code'}:
+                </td>
+                <td className="py-2 text-[#2d3748] font-semibold">{data.courseCode}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-semibold text-[#718096]">
+                  {isBengali ? 'কোর্স শিরোনাম' : 'Course Title'}:
+                </td>
+                <td className="py-2 text-[#2d3748] font-semibold">{data.courseTitle}</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -331,9 +327,8 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
               <div className="space-y-1 text-sm">
                 <p><span className="text-[#718096]">{isBengali ? 'নাম' : 'Name'}:</span> <span className="font-medium text-[#2d3748]">{data.studentName}</span></p>
                 <p><span className="text-[#718096]">{isBengali ? 'আইডি' : 'ID'}:</span> <span className="font-medium text-[#2d3748]">{data.studentId}</span></p>
+                <p><span className="text-[#718096]">{isBengali ? 'ব্যাচ' : 'Batch'}:</span> <span className="font-medium text-[#2d3748]">{data.batch}{data.section}</span></p>
                 <p><span className="text-[#718096]">{isBengali ? 'সেমিস্টার' : 'Semester'}:</span> <span className="font-medium text-[#2d3748]">{data.semester}</span></p>
-                <p><span className="text-[#718096]">{isBengali ? 'সেকশন' : 'Section'}:</span> <span className="font-medium text-[#2d3748]">{data.section}</span></p>
-                <p><span className="text-[#718096]">{isBengali ? 'সেশন' : 'Session'}:</span> <span className="font-medium text-[#2d3748]">{data.session}</span></p>
               </div>
             </div>
 

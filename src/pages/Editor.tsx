@@ -64,7 +64,7 @@ const Editor = () => {
 
     const wheelHandler = (e: WheelEvent) => {
       if (e.ctrlKey || e.metaKey) {
-        e.preventDefault(); // 🔥 browser zoom বন্ধ
+        e.preventDefault(); 
         const delta = e.deltaY < 0 ? 0.06 : -0.06;
         setScale(prev =>
           Math.min(1.3, Math.max(0.3, prev + delta))
@@ -237,7 +237,7 @@ const Editor = () => {
             {/* RIGHT PREVIEW */}
             <div
               ref={previewRef}
-              className="lg:col-span-7 bg-muted/20 border rounded-2xl relative overflow-hidden h-[calc(100vh-250px)]"
+              className="lg:col-span-7 bg-muted/20 border rounded-2xl relative overflow-hidden h-[calc(100vh-150px)]"
             >
               <div
                 className="absolute inset-0 cursor-grab active:cursor-grabbing"

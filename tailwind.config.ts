@@ -68,8 +68,8 @@ export default {
         },
       },
 fontFamily: {
-  display: ['"Genos"', 'sans-serif'],
-  body: ['"Genos"', 'sans-serif'],
+  display: ['tahoma'],
+  body: ['tahoma'],
   bengali: ['"Noto Sans Bengali"', 'sans-serif'],
 },
       borderRadius: {
