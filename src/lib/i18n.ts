@@ -45,6 +45,7 @@ const resources = {
       session: "Session",
       batch: "Batch",
       group: "Group",
+      roll: "Roll",
       
       // Teacher Info
       teacherName: "Teacher Name",
@@ -104,8 +105,8 @@ const resources = {
       // Template styles
       style1: "Classic",
       style2: "Modern",
-      style3: "Elegant",
-      style4: "Minimal",
+      style3: "Pattern-1",
+      style4: "Pattern-2",
     },
       // Contact details
       Contact: "Contact",
@@ -153,6 +154,7 @@ const resources = {
       session: "সেশন",
       batch: "ব্যাচ",
       group: "গ্রুপ",
+      roll:"রোল",
       
       // Teacher Info
       teacherName: "শিক্ষকের নাম",
@@ -212,8 +214,8 @@ const resources = {
       // Template styles
       style1: "ক্লাসিক",
       style2: "মডার্ন",
-      style3: "এলিগ্যান্ট",
-      style4: "মিনিমাল",
+      style3: "প্যাটার্ন-১",
+      style4: "প্যাটার্ন-২",
 
       // Contact Page
       Contact: "যোগাযোগ",

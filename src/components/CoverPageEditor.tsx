@@ -16,7 +16,6 @@ import {
   designations,
   semesters,
   sections,
-  groups,
   getTeachersForDepartment,
 } from '@/lib/storage';
 
@@ -202,6 +201,7 @@ const CoverPageEditor = ({ data, onChange, templateType }: CoverPageEditorProps)
         <h3 className="font-semibold">{t('submittedBy')}</h3>
         {renderField(t('studentName'), 'studentName')}
         {renderField(t('studentId'), 'studentId')}
+        {renderField(t('Roll'),'roll')}
         {renderField(t('Batch (E.g. A,B,C,D....)'), 'section', 'select', sections.map(s => ({ value: s, label: s })))}
         {renderField(t('semester'), 'semester', 'select', semesters.map(s => ({ value: s, label: s })))}
         {renderField(t('batch'), 'batch')}

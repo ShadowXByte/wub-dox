@@ -46,8 +46,8 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
 
           {/* Assignment Badge */}
           <div className="text-center my-6">
-            <div className="inline-flex px-12 py-4 bg-[#1a365d] text-white">
-              <h2 className="text-xl font-display font-bold tracking-widerwub">
+            <div className="inline-flex rounded-xl gap-4 px-12 py-4 bg-[#1a365d] text-white">
+              <h2 className="text-2xl font-display font-bold tracking-wider">
                 {isBengali ? 'অ্যাসাইনমেন্ট' : 'ASSIGNMENT'}
               </h2>
               <p className="text-2xl font-bold text-[#d69e2e]">#{data.assignmentNo}</p>
@@ -56,27 +56,28 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
 
           {/* Course Details */}
           <div className="my-6 text-center">
-            <div className="space-y-2">
-              <p className="text-sm text-[#718096]">{isBengali ? 'কোর্স কোড' : 'Course Code'}: <span className="font-bold text-[#1a365d]">{data.courseCode}</span></p>
-              <p className="text-lg font-semibold text-[#2d3748]">{data.courseTitle}</p>
-              {data.assignmentTitle && (
-                <p className="text-base text-[#4a5568] italic">"{data.assignmentTitle}"</p>
-              )}
+            <div className="flex flex-col text-start ml-16 space-y-2">
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'কোর্স কোড' : 'Course Code'}: <span className="font-bold text-[#1a365d]">{data.courseCode}</span></p>
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'কোর্স নাম' : 'Course Name'}: <span className="font-bold text-[#1a365d]">{data.courseTitle}</span></p>
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'বিষয়' : 'Topic'}: <span className="font-bold text-[#1a365d]">{data.assignmentTitle}</span></p>
+              <p className="text-lg text-[#718096]">
+                {isBengali ? 'জমা দেওয়ার তারিখ' : 'Date of Submission'}: <span className="font-bold text-[#1a365d]">{data.submissionDate}</span>
+              </p>
             </div>
           </div>
 
           {/* Two column layout */}
           <div className="flex-1 flex items-center">
-            <div className="w-full grid grid-cols-2 gap-8">
+            <div className="w-full grid grid-cols-2 gap-2">
               <div className="p-4 bg-[#f7fafc] border-l-4 border-[#1a365d]">
                 <h3 className="text-xs font-bold text-[#1a365d] uppercase tracking-wider mb-3">
                   {isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}
                 </h3>
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-[#2d3748]">{data.studentName}</p>
+                  <p className="text-[#718096]">Roll: {data.roll}</p>
                   <p className="text-[#718096]">ID: {data.studentId}</p>
-                  <p className="text-[#718096]">{data.semester} Semester | Section: {data.section}</p>
-                  <p className="text-[#718096]">Session: {data.session}</p>
+                  <p className="text-[#718096]">{data.semester} Semester | Batch: {data.batch}{data.section}</p>
                 </div>
               </div>
               <div className="p-4 bg-[#f7fafc] border-l-4 border-[#d69e2e]">
@@ -94,9 +95,7 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
 
           {/* Footer */}
           <div className="text-center pt-4 border-t border-[#e2e8f0]">
-            <p className="text-sm text-[#718096]">
-              {isBengali ? 'জমা দেওয়ার তারিখ' : 'Date of Submission'}: <span className="font-bold text-[#1a365d]">{data.submissionDate}</span>
-            </p>
+
           </div>
           
           {/* Bottom decorative line */}
@@ -110,14 +109,10 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
     return (
       <div
         ref={ref}
-        className={`w-[210mm] min-h-[297mm] bg-white p-8 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`}
+        className={`w-[210mm] min-h-[297mm] bg-white p-8 mx-auto  ${isBengali ? 'font-bengali' : 'font-body'}`}
         style={{ aspectRatio: '210/297' }}
       >
         <div className="h-full flex flex-col relative overflow-hidden">
-          {/* Elegant side borders */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#1a365d] to-transparent opacity-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#1a365d] to-transparent opacity-10" />
-          
           {/* Main content */}
           <div className="flex-1 flex flex-col px-12 py-8">
             {/* Header */}
@@ -164,7 +159,6 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
                   </p>
                   <p className="text-xl font-display font-semibold text-[#1a365d]">{data.studentName}</p>
                   <p className="text-sm text-[#718096]">ID: {data.studentId} | {data.semester} Semester | Section {data.section}</p>
-                  <p className="text-sm text-[#718096]">Session: {data.session}</p>
                 </div>
                 
                 <div className="flex justify-center">
@@ -326,6 +320,7 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
               </h3>
               <div className="space-y-1 text-sm">
                 <p><span className="text-[#718096]">{isBengali ? 'নাম' : 'Name'}:</span> <span className="font-medium text-[#2d3748]">{data.studentName}</span></p>
+                <p><span className="text-[#718096]">{isBengali ? 'রোল' : 'Roll'}:</span> <span className="font-medium text-[#2d3748]">{data.roll}</span></p>
                 <p><span className="text-[#718096]">{isBengali ? 'আইডি' : 'ID'}:</span> <span className="font-medium text-[#2d3748]">{data.studentId}</span></p>
                 <p><span className="text-[#718096]">{isBengali ? 'ব্যাচ' : 'Batch'}:</span> <span className="font-medium text-[#2d3748]">{data.batch}{data.section}</span></p>
                 <p><span className="text-[#718096]">{isBengali ? 'সেমিস্টার' : 'Semester'}:</span> <span className="font-medium text-[#2d3748]">{data.semester}</span></p>

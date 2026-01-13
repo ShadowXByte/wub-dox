@@ -70,7 +70,7 @@ export default {
 fontFamily: {
   display: ['tahoma'],
   body: ['tahoma'],
-  bengali: ['"Noto Sans Bengali"', 'sans-serif'],
+  bengali: ['"Noto Sans Bengali"', 'tahoma'],
 },
       borderRadius: {
         lg: "var(--radius)",

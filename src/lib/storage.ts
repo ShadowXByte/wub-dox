@@ -14,9 +14,9 @@ export interface CoverPageData {
   studentId: string;
   section: string;
   semester: string;
-  session: string;
   batch: string;
   group: string;
+  roll: string;
   teacherName: string;
   teacherDesignation: string;
   teacherSub: string;
@@ -38,11 +38,11 @@ export const defaultCoverPageData: CoverPageData = {
   topicName: "",
   studentName: "",
   studentId: "",
-  section: "A",
+  section: "C",
   semester: "1st",
-  session: "2026-27",
-  batch: "",
+  batch: "69",
   group: "A",
+  roll:"",
   teacherName: "",
   teacherDesignation: "professor",
   teacherSub:"",
