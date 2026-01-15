@@ -21,6 +21,7 @@ const resources = {
       homework: "Homework",
       selectTemplate: "Select a Template",
       chooseStyle: "Choose Style",
+      index: "Index",
       
       // Form Labels
       universityName: "University Name",
@@ -130,6 +131,7 @@ const resources = {
       homework: "হোমওয়ার্ক",
       selectTemplate: "একটি টেমপ্লেট নির্বাচন করুন",
       chooseStyle: "স্টাইল নির্বাচন করুন",
+      index: "ইনডেক্স ",
       
       // Form Labels
       universityName: "বিশ্ববিদ্যালয়ের নাম",

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { FileText, BookOpen, FlaskConical, PenTool } from 'lucide-react';
+import { FileText, BookOpen, FlaskConical, PenTool, FileSearchIcon } from 'lucide-react';
 import Header from '@/components/Header';
 import TemplateCard from '@/components/TemplateCard';
 
@@ -43,6 +43,14 @@ const Templates = () => {
       color: 'bg-secondary',
       type: 'homework',
     },
+    // {
+    //   title: 'Index',
+    //   titleKey: 'index',
+    //   description: isBengali ? 'কয়েক মিনিটের মধ্যে যেকোনো ইনডেক্স তৈরি করুন।' : 'Create any index in minutes.',
+    //   icon: FileSearchIcon,
+    //   color: 'bg-secondary',
+    //   type: 'homework',
+    // },
   ];
 
   return (

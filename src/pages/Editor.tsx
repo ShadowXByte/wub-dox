@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import {
   ArrowLeft,
@@ -48,27 +47,26 @@ const Editor = () => {
   const [style, setStyle] = useState(styleParam);
 
   /* ---------------- PREVIEW TRANSFORM ---------------- */
-  const [scale, setScale] = useState(0.6);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(0.5);
+  const [position, setPosition] = useState({ x: 20, y: 20 });
   const [isDragging, setIsDragging] = useState(false);
   const dragStart = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     setData(loadFromLocalStorage());
+    if (window.innerWidth > 1024) setScale(0.6);
   }, []);
 
-  /* ---------------- PREVENT BROWSER ZOOM (CRITICAL) ---------------- */
+  /* ---------------- PREVENT BROWSER ZOOM ---------------- */
   useEffect(() => {
     const el = previewRef.current;
     if (!el) return;
 
     const wheelHandler = (e: WheelEvent) => {
       if (e.ctrlKey || e.metaKey) {
-        e.preventDefault(); 
+        e.preventDefault();
         const delta = e.deltaY < 0 ? 0.06 : -0.06;
-        setScale(prev =>
-          Math.min(1.3, Math.max(0.3, prev + delta))
-        );
+        setScale(prev => Math.min(1.3, Math.max(0.2, prev + delta)));
       }
     };
 
@@ -87,58 +85,48 @@ const Editor = () => {
     saveToLocalStorage(data);
     toast({
       title: isBengali ? 'সংরক্ষিত!' : 'Saved!',
-      description: isBengali
-        ? 'আপনার তথ্য সংরক্ষণ করা হয়েছে'
-        : 'Your data has been saved',
+      description: isBengali ? 'আপনার তথ্য সংরক্ষণ করা হয়েছে' : 'Your data has been saved',
     });
   };
 
   const handleReset = () => {
     clearLocalStorage();
     setData(defaultCoverPageData);
-    setScale(0.6);
-    setPosition({ x: 0, y: 0 });
+    setPosition({ x: 20, y: 20 });
     toast({
       title: isBengali ? 'রিসেট!' : 'Reset!',
-      description: isBengali
-        ? 'সব তথ্য মুছে ফেলা হয়েছে'
-        : 'All data cleared',
+      description: isBengali ? 'সব তথ্য মুছে ফেলা হয়েছে' : 'All data cleared',
     });
   };
 
-  /* ---------------- DRAG ---------------- */
-  const handleMouseDown = (e: React.MouseEvent) => {
+  /* ---------------- DRAG & TOUCH LOGIC ---------------- */
+  const startDragging = (clientX: number, clientY: number) => {
     setIsDragging(true);
     dragStart.current = {
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
+      x: clientX - position.x,
+      y: clientY - position.y,
     };
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const moveDragging = (clientX: number, clientY: number) => {
     if (!isDragging) return;
     setPosition({
-      x: e.clientX - dragStart.current.x,
-      y: e.clientY - dragStart.current.y,
+      x: clientX - dragStart.current.x,
+      y: clientY - dragStart.current.y,
     });
   };
 
   const stopDragging = () => setIsDragging(false);
 
-  /* ---------------- TEMPLATE ---------------- */
+  /* ---------------- TEMPLATE RENDER ---------------- */
   const renderTemplate = () => {
     const props = { ref: printRef, data, style };
     switch (type) {
-      case 'assignment':
-        return <AssignmentTemplate {...props} />;
-      case 'labReport':
-        return <LabReportTemplate {...props} />;
-      case 'forum':
-        return <ForumTemplate {...props} />;
-      case 'homework':
-        return <HomeworkTemplate {...props} />;
-      default:
-        return <AssignmentTemplate {...props} />;
+      case 'assignment': return <AssignmentTemplate {...props} />;
+      case 'labReport': return <LabReportTemplate {...props} />;
+      case 'forum': return <ForumTemplate {...props} />;
+      case 'homework': return <HomeworkTemplate {...props} />;
+      default: return <AssignmentTemplate {...props} />;
     }
   };
 
@@ -158,63 +146,63 @@ const Editor = () => {
       <main className="pt-20 pb-8 px-4">
         <div className="container mx-auto max-w-7xl">
 
-          {/* TOP BAR */}
-          <div className="flex items-center justify-between mb-6 gap-4">
-            <Button variant="ghost" onClick={() => navigate('/templates')}>
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              {t('back')}
-            </Button>
-
-            <h1 className="text-2xl font-bold">
-              {templateTitle} {isBengali ? 'এডিটর' : 'Editor'}
-            </h1>
-
-            <div className="flex gap-2">
-              <Button variant="outline" onClick={handleReset}>
-                <RotateCcw className="w-4 h-4 mr-1" />
-                {t('reset')}
+          {/* TOP BAR: Stacked on mobile, side-by-side on desktop */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" onClick={() => navigate('/templates')}>
+                <ArrowLeft className="w-4 h-4 mr-1" />
+                {t('back')}
               </Button>
-              <Button variant="outline" onClick={handleSave}>
-                <Save className="w-4 h-4 mr-1" />
-                {t('save')}
+              <h1 className="text-xl md:text-2xl font-bold truncate">
+                {templateTitle} {isBengali ? 'এডিটর' : 'Editor'}
+              </h1>
+            </div>
+
+            <div className="flex gap-2 w-full md:w-auto">
+              <Button variant="outline" size="sm" className="flex-1 md:flex-none" onClick={handleReset}>
+                <RotateCcw className="w-4 h-4 mr-1" /> {t('reset')}
               </Button>
-              <Button onClick={handlePrint}>
-                <Printer className="w-4 h-4 mr-1" />
-                {t('print')}
+              <Button variant="outline" size="sm" className="flex-1 md:flex-none" onClick={handleSave}>
+                <Save className="w-4 h-4 mr-1" /> {t('save')}
+              </Button>
+              <Button size="sm" className="flex-1 md:flex-none" onClick={handlePrint}>
+                <Printer className="w-4 h-4 mr-1" /> {t('print')}
               </Button>
             </div>
           </div>
 
-          {/* STYLE + ZOOM */}
-          <div className="flex items-center justify-between mb-6 gap-4">
-            <div className="flex gap-2">
+          {/* STYLE & ZOOM CONTROLS */}
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-4">
+            <div className="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 no-scrollbar">
               {[1, 2, 3, 4].map(s => (
                 <Button
                   key={s}
                   size="sm"
                   variant={style === s ? 'default' : 'outline'}
                   onClick={() => setStyle(s)}
+                  className="whitespace-nowrap"
                 >
                   {styleNames[s - 1]}
                 </Button>
               ))}
             </div>
 
-            {/* ZOOM BUTTONS */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3 bg-muted/50 p-1.5 rounded-full border">
               <Button
                 size="icon"
-                variant="outline"
-                onClick={() => setScale(s => Math.max(0.3, s - 0.1))}
+                variant="ghost"
+                className="h-8 w-8 rounded-full"
+                onClick={() => setScale(s => Math.max(0.2, s - 0.1))}
               >
                 <ZoomOut className="w-4 h-4" />
               </Button>
-              <span className="text-sm w-12 text-center">
+              <span className="text-xs font-mono w-10 text-center">
                 {Math.round(scale * 100)}%
               </span>
               <Button
                 size="icon"
-                variant="outline"
+                variant="ghost"
+                className="h-8 w-8 rounded-full"
                 onClick={() => setScale(s => Math.min(1.3, s + 0.1))}
               >
                 <ZoomIn className="w-4 h-4" />
@@ -222,11 +210,11 @@ const Editor = () => {
             </div>
           </div>
 
-          {/* MAIN LAYOUT */}
+          {/* MAIN GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
 
-            {/* LEFT */}
-            <div className="lg:col-span-3 bg-card border rounded-2xl p-6 h-[calc(100vh-50px)] overflow-y-auto hide-scrollbar">
+            {/* EDITOR PANEL: Order 2 on mobile, 1 on desktop if needed */}
+            <div className="lg:col-span-4 xl:col-span-3 bg-card border rounded-2xl p-6 h-auto lg:h-[calc(100vh-200px)] overflow-y-auto shadow-sm order-2 lg:order-1 hide-scrollbar">
               <CoverPageEditor
                 data={data}
                 onChange={setData}
@@ -234,28 +222,36 @@ const Editor = () => {
               />
             </div>
 
-            {/* RIGHT PREVIEW */}
+            {/* PREVIEW PANEL */}
             <div
               ref={previewRef}
-              className="lg:col-span-7 bg-muted/20 border rounded-2xl relative overflow-hidden h-[calc(100vh-150px)]"
+              className="lg:col-span-6 xl:col-span-7 bg-muted/30 border rounded-2xl relative overflow-hidden h-[500px] md:h-[600px] lg:h-[calc(100vh-200px)] shadow-inner touch-none order-1 lg:order-2"
             >
               <div
                 className="absolute inset-0 cursor-grab active:cursor-grabbing"
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
+                onMouseDown={(e) => startDragging(e.clientX, e.clientY)}
+                onMouseMove={(e) => moveDragging(e.clientX, e.clientY)}
                 onMouseUp={stopDragging}
                 onMouseLeave={stopDragging}
+                onTouchStart={(e) => startDragging(e.touches[0].clientX, e.touches[0].clientY)}
+                onTouchMove={(e) => moveDragging(e.touches[0].clientX, e.touches[0].clientY)}
+                onTouchEnd={stopDragging}
               >
                 <div
                   style={{
                     transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                     transformOrigin: '0 0',
                     width: 'fit-content',
-                    transition: isDragging ? 'none' : 'transform 0.15s ease-out',
+                    transition: isDragging ? 'none' : 'transform 0.1s ease-out',
                   }}
                 >
                   {renderTemplate()}
                 </div>
+              </div>
+              
+              {/* Mobile Hint */}
+              <div className="absolute bottom-4 right-4 bg-black/50 text-white text-[10px] px-2 py-1 rounded md:hidden pointer-events-none">
+                Drag to pan • Use +/- to zoom
               </div>
             </div>
 

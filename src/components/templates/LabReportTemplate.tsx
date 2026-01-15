@@ -19,202 +19,154 @@ const LabReportTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, sty
   const departmentName = isBengali ? department?.bn : department?.en;
   const designationName = isBengali ? designation?.bn : designation?.en || data.teacherDesignation;
 
+  // --- STYLE 2 (Border & Gradient) ---
   if (style === 2) {
     return (
-      <div
-        ref={ref}
-        className={`w-[210mm] min-h-[297mm] bg-white p-10 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`}
-        style={{ aspectRatio: '210/297' }}
-      >
-        <div className="h-full flex flex-col relative border-[3px] border-[#1a365d] p-8">
-          {/* Scientific pattern corners */}
-          <div className="absolute top-2 left-2 w-12 h-12">
-            <div className="absolute top-0 left-0 w-full h-full border-l-2 border-t-2 border-[#d69e2e]" />
-            <div className="absolute top-2 left-2 w-2 h-2 bg-[#d69e2e] rounded-full" />
+      <div ref={ref} className={`w-[210mm] min-h-[297mm] bg-white p-10 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`} style={{ aspectRatio: '210/297' }}>
+        <div className="h-full border-[3px] border-[#1a365d] p-8 flex flex-col relative">
+          <div className="absolute top-4 left-4 right-4 h-1 bg-gradient-to-r from-transparent via-[#d69e2e] to-transparent" />
+          <div className="text-center space-y-3 mb-6 pt-4">
+            <img src="/wub.png" alt="wub-logo" />
+            <h2 className="text-xl text-[#718096]">{departmentName}</h2>
           </div>
-          <div className="absolute top-2 right-2 w-12 h-12">
-            <div className="absolute top-0 right-0 w-full h-full border-r-2 border-t-2 border-[#d69e2e]" />
-            <div className="absolute top-2 right-2 w-2 h-2 bg-[#d69e2e] rounded-full" />
+          <div className="flex items-center justify-center gap-3 my-4">
+            <div className="flex-1 h-px bg-[#d69e2e]" />
+            <div className="w-4 h-4 border-2 border-[#d69e2e] rotate-45" />
+            <div className="flex-1 h-px bg-[#d69e2e]" />
           </div>
-          <div className="absolute bottom-2 left-2 w-12 h-12">
-            <div className="absolute bottom-0 left-0 w-full h-full border-l-2 border-b-2 border-[#d69e2e]" />
-            <div className="absolute bottom-2 left-2 w-2 h-2 bg-[#d69e2e] rounded-full" />
-          </div>
-          <div className="absolute bottom-2 right-2 w-12 h-12">
-            <div className="absolute bottom-0 right-0 w-full h-full border-r-2 border-b-2 border-[#d69e2e]" />
-            <div className="absolute bottom-2 right-2 w-2 h-2 bg-[#d69e2e] rounded-full" />
-          </div>
-
-          {/* Header */}
-          <div className="text-center space-y-2 mb-6">
-            <h1 className="text-2xl font-display font-bold text-[#1a365d] uppercase tracking-wide">
-              {data.universityName}
-            </h1>
-            <p className="text-sm text-[#718096]">{departmentName}</p>
-          </div>
-
-          {/* Lab Report Badge */}
           <div className="text-center my-6">
-            <div className="inline-block bg-gradient-to-r from-[#1a365d] to-[#2d4a7c] px-10 py-4 rounded-lg">
-              <h2 className="text-xl font-display font-bold text-white tracking-wider">
-                {isBengali ? 'ল্যাব রিপোর্ট' : 'LAB REPORT'}
-              </h2>
+            <div className="inline-flex flex-col rounded-xl gap-2 px-12 py-4 bg-[#1a365d] text-white">
+              <h2 className="text-2xl font-display font-bold tracking-wider">{isBengali ? 'ল্যাব রিপোর্ট' : 'LAB REPORT'}</h2>
+              <p className="text-xl font-bold text-[#d69e2e] border-t border-white/20 pt-1">
+                {isBengali ? 'এক্সপেরিমেন্ট নং' : 'Exp No'}: {data.experimentNo}
+              </p>
             </div>
           </div>
-
-          {/* Experiment Info */}
-          <div className="my-4 text-center">
-            <div className="inline-block bg-[#f7fafc] border-2 border-[#d69e2e] rounded-lg px-8 py-4">
-              <p className="text-xs text-[#718096] uppercase tracking-wider">{isBengali ? 'এক্সপেরিমেন্ট নং' : 'Experiment No'}</p>
-              <p className="text-3xl font-bold text-[#1a365d]">{data.experimentNo}</p>
+          <div className="my-6 text-center">
+            <div className="flex flex-col text-start ml-16 space-y-2">
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'কোর্স কোড' : 'Course Code'}: <span className="font-bold text-[#1a365d]">{data.courseCode}</span></p>
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'কোর্স নাম' : 'Course Name'}: <span className="font-bold text-[#1a365d]">{data.courseTitle}</span></p>
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'এক্সপেরিমেন্টের নাম' : 'Experiment Name'}: <span className="font-bold text-[#1a365d]">{data.experimentName}</span></p>
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'এক্সপেরিমেন্টের তারিখ' : 'Experiment Date'}: <span className="font-bold text-[#1a365d]">{data.experimentDate}</span></p>
+              <p className="text-lg font-semibold text-[#718096]">{isBengali ? 'জমা দেওয়ার তারিখ' : 'Submission Date'}: <span className="font-bold text-[#1a365d]">{data.submissionDate}</span></p>
             </div>
           </div>
-
-          <div className="text-center my-4">
-            <h3 className="text-lg font-display font-semibold text-[#2d3748]">
-              {data.experimentName}
-            </h3>
-          </div>
-
-          {/* Course Info */}
-          <div className="grid grid-cols-2 gap-4 my-4 text-sm">
-            <div className="p-3 bg-[#f7fafc] rounded-lg text-center">
-              <p className="text-xs text-[#718096]">{isBengali ? 'কোর্স কোড' : 'Course Code'}</p>
-              <p className="font-bold text-[#1a365d]">{data.courseCode}</p>
-            </div>
-            <div className="p-3 bg-[#f7fafc] rounded-lg text-center">
-              <p className="text-xs text-[#718096]">{isBengali ? 'কোর্স শিরোনাম' : 'Course Title'}</p>
-              <p className="font-semibold text-[#2d3748]">{data.courseTitle}</p>
-            </div>
-          </div>
-
-          {/* Submitted sections */}
           <div className="flex-1 flex items-center">
-            <div className="w-full grid grid-cols-2 gap-6">
-              <div className="p-4 border border-[#e2e8f0] rounded-lg">
-                <h3 className="text-xs font-bold text-[#1a365d] uppercase tracking-wider mb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#1a365d] rounded-full" />
-                  {isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}
-                </h3>
+            <div className="w-full grid grid-cols-2 gap-2">
+              <div className="p-4 bg-[#f7fafc] border-l-4 border-[#1a365d]">
+                <h3 className="text-xs font-bold text-[#1a365d] uppercase tracking-wider mb-3">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</h3>
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-[#2d3748]">{data.studentName}</p>
+                  <p className="text-[#718096]">Roll: {data.roll}</p>
                   <p className="text-[#718096]">ID: {data.studentId}</p>
-                  <p className="text-[#718096]">{data.semester} | Section {data.section}</p>
-                  <p className="text-[#718096]">Group: {data.group}</p>
+                  <p className="text-[#718096]">Batch: {data.batch}{data.section}</p>
                 </div>
               </div>
-              <div className="p-4 border border-[#e2e8f0] rounded-lg">
-                <h3 className="text-xs font-bold text-[#d69e2e] uppercase tracking-wider mb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#d69e2e] rounded-full" />
-                  {isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}
-                </h3>
+              <div className="p-4 bg-[#f7fafc] border-l-4 border-[#d69e2e]">
+                <h3 className="text-xs font-bold text-[#d69e2e] uppercase tracking-wider mb-3">{isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}</h3>
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-[#2d3748]">{data.teacherName}</p>
-                  <p className="text-[#718096]">{designationName}</p>
+                  <p className="text-[#718096]">{designationName},</p>
                   <p className="text-[#718096]">{departmentName}</p>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Footer */}
-          <div className="pt-4 border-t border-[#e2e8f0] mt-4">
-            <div className="flex justify-between text-sm">
-              <p className="text-[#718096]">
-                {isBengali ? 'এক্সপেরিমেন্টের তারিখ' : 'Experiment Date'}: <span className="font-semibold text-[#2d3748]">{data.experimentDate}</span>
-              </p>
-              <p className="text-[#718096]">
-                {isBengali ? 'জমা দেওয়ার তারিখ' : 'Submission Date'}: <span className="font-semibold text-[#2d3748]">{data.submissionDate}</span>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     );
   }
 
+  // --- STYLE 3 (Minimal/Modern with wub_logo_j) ---
   if (style === 3) {
-    return (
+return (
       <div
         ref={ref}
-        className={`w-[210mm] min-h-[297mm] bg-white p-8 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`}
+        className={`w-[210mm] min-h-[297mm] bg-white p-8 mx-auto  ${isBengali ? 'font-bengali' : 'font-body'}`}
         style={{ aspectRatio: '210/297' }}
       >
-        <div className="h-full flex flex-col relative">
-          {/* Subtle gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a365d]/3 to-transparent" />
-          
-          <div className="relative flex-1 flex flex-col px-12 py-8">
+        <div className="h-full flex flex-col relative overflow-hidden">
+          {/* Main content */}
+          <div className="flex-1 flex flex-col px-12 py-8">
             {/* Header */}
-            <div className="text-center space-y-3 mb-6">
-              <h1 className="text-xl font-display font-bold text-[#1a365d] uppercase tracking-[0.15em]">
-                {data.universityName}
-              </h1>
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-px bg-[#d69e2e]" />
-                <div className="w-2 h-2 border border-[#d69e2e] rotate-45" />
-                <div className="w-12 h-px bg-[#d69e2e]" />
+            <div className="text-center space-y-4 mb-8">
+              <div className="inline-flex flex-col items-center gap-4 px-6 py-2 border-b-2 border-[#d69e2e]">
+                <img src="/wub_logo_j.png" alt="wub-logo" className="w-40"/>
+                <h1 className="text-xl text-center font-display font-bold text-[#1a365d] uppercase tracking-[0.2em]">
+                  {data.universityName}
+                </h1>
               </div>
-              <p className="text-sm text-[#4a5568]">{departmentName}</p>
+              <p className="text-lg text-[#718096]">{departmentName}</p>
             </div>
 
-            {/* Elegant Lab Report title */}
-            <div className="text-center my-6">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#718096] mb-2">
-                {isBengali ? 'গবেষণাগার' : 'Laboratory'}
-              </p>
-              <h2 className="text-2xl font-display font-light text-[#1a365d] tracking-wide">
-                {isBengali ? 'প্রতিবেদন' : 'Report'}
-              </h2>
-            </div>
+        {/* Experiment Info */}
+        <div className="text-center space-y-4 my-4">
+          <h2 className="text-xl font-display font-semibold text-[#2d3748]">
+            {isBengali ? 'ল্যাব রিপোর্ট' : 'LAB REPORT'}
+          </h2>
+          <div className="inline-block px-8 py-3 border-2 border-[#1a365d] rounded-lg">
+            <p className="text-lg font-medium text-[#1a365d]">
+              {isBengali ? 'এক্সপেরিমেন্ট নং' : 'Experiment No'}: {data.assignmentNo}
+            </p>
+          </div>
+        </div>
 
-            {/* Experiment Info */}
-            <div className="text-center my-6">
-              <div className="inline-block border border-[#e2e8f0] px-10 py-4">
-                <p className="text-xs text-[#a0aec0] uppercase tracking-wider mb-1">
-                  {isBengali ? 'এক্সপেরিমেন্ট' : 'Experiment'} #{data.experimentNo}
+            {/* Course Info - Elegant cards */}
+            <div className="my-2 space-y-1 text-start px-8">
+              <div className="inline-flex flex-col px-8 py-3">
+                <p className="text-lg font-bold text-[#1a365d] uppercase ">{isBengali ? 'কোর্স কোড' : 'Course Code'}: {data.courseCode}</p>
+                <p className="text-lg font-bold text-[#2d3748] uppercase">{isBengali ? 'কোর্স নাম' : 'Course Name'}: {data.courseTitle}</p>
+              </div>
+              {data.experimentName && (
+                <p className="text-lg text-[#2d3748] italic border-l-2 border-[#d69e2e] pl-4 mx-auto max-w-md">
+                  "{data.experimentName}"
                 </p>
-                <h3 className="text-lg font-display font-semibold text-[#1a365d]">
-                  {data.experimentName}
-                </h3>
-              </div>
-            </div>
-
-            {/* Course */}
-            <div className="text-center my-4">
-              <p className="text-sm text-[#718096]">
-                {data.courseCode} — {data.courseTitle}
-              </p>
+              )}
             </div>
 
             {/* Submitted sections */}
             <div className="flex-1 flex items-center">
-              <div className="w-full space-y-8 text-center">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
+              <div className="w-full space-y-8">
+                <div className="text-center">
+                  <p className="text-base uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
                     {isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}
                   </p>
-                  <p className="text-lg font-display font-semibold text-[#1a365d]">{data.studentName}</p>
-                  <p className="text-sm text-[#718096]">ID: {data.studentId} | Group: {data.group}</p>
-                  <p className="text-sm text-[#718096]">{data.semester} Semester | Section {data.section}</p>
+                  <p className="text-xl font-display font-semibold text-[#1a365d]">{isBengali ? 'নাম' : 'Name'}: {data.studentName}</p>
+                  <div className="text-start mx-48">
+                    <p><span className="text-lg text-[#718096]">{isBengali ? 'রোল' : 'Roll'}:</span> <span className="font-medium text-[#2d3748]">{data.roll}</span></p>
+                    <p><span className="text-lg text-[#718096]">{isBengali ? 'আইডি' : 'ID'}:</span> <span className="font-medium text-[#2d3748]">{data.studentId}</span></p>
+                    <p><span className="text-lg text-[#718096]">{isBengali ? 'ব্যাচ' : 'Batch'}:</span> <span className="font-medium text-[#2d3748]">{data.batch}{data.section}</span></p>
+                  </div>
                 </div>
                 
-                <div className="w-16 h-px bg-[#e2e8f0] mx-auto" />
+                <div className="flex justify-center">
+                  <div className="w-24 h-px bg-[#d69e2e]" />
+                </div>
                 
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
-                    {isBengali ? 'ল্যাব ইনস্ট্রাক্টর' : 'Lab Instructor'}
+                <div className="text-center">
+                  <p className="text-base uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
+                    {isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}
                   </p>
-                  <p className="text-lg font-display font-semibold text-[#1a365d]">{data.teacherName}</p>
-                  <p className="text-sm text-[#718096]">{designationName}</p>
+                  <p className="text-xl font-display font-semibold text-[#1a365d]">{data.teacherName}</p>
+                  <p className="text-base font-semibold text-[#2d3748]">{designationName}</p>
+                  <p className="text-sm text-[#2d3748]">{departmentName}</p>
                 </div>
               </div>
             </div>
 
-            {/* Footer */}
-            <div className="pt-6 flex justify-between text-xs text-[#a0aec0]">
-              <p>{isBengali ? 'এক্সপেরিমেন্টের তারিখ' : 'Exp. Date'}: {data.experimentDate}</p>
-              <p>{isBengali ? 'জমা দেওয়ার তারিখ' : 'Submitted'}: {data.submissionDate}</p>
+            <div className="text-center justify-around flex pt-6">
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#718096]">
+                  {isBengali ? 'এক্সপেরিমেন্টের তারিখ' : 'Date of Experiment'}
+                </p>
+              <p className="text-base font-semibold text-[#1a365d]">{data.submissionDate}</p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#718096]">
+                  {isBengali ? 'জমা দেওয়ার তারিখ' : 'Date of Submission'}
+                </p>
+              <p className="text-base font-semibold text-[#1a365d]">{data.submissionDate}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -222,155 +174,117 @@ const LabReportTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, sty
     );
   }
 
+  // --- STYLE 4 (Minimalist/Clean) ---
   if (style === 4) {
     return (
-      <div
-        ref={ref}
-        className={`w-[210mm] min-h-[297mm] bg-white p-16 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`}
-        style={{ aspectRatio: '210/297' }}
-      >
+      <div ref={ref} className={`w-[210mm] min-h-[297mm] bg-white p-16 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`} style={{ aspectRatio: '210/297' }}>
         <div className="h-full flex flex-col">
-          {/* Minimal header */}
-          <div className="text-center mb-8">
-            <h1 className="text-base font-medium text-[#2d3748]">{data.universityName}</h1>
-            <p className="text-xs text-[#a0aec0] mt-1">{departmentName}</p>
+          <div className="inline-flex flex-col items-center gap-2 mb-12">
+            <img src="/wub_logo_j.png" alt="wub-logo" className="w-40"/>
+            <img src="/wub-name.png" alt="logo-name" className="h-20" />
+            <p className="text-xl text-[#2d3748]">{departmentName}</p>
           </div>
-
-          {/* Main content */}
-          <div className="flex-1 flex flex-col items-center justify-center text-center">
-            <p className="text-xs uppercase tracking-[0.4em] text-[#a0aec0] mb-4">
-              {isBengali ? 'ল্যাব রিপোর্ট' : 'Lab Report'}
-            </p>
-            
-            <span className="text-7xl font-display font-light text-[#1a365d]">{data.experimentNo}</span>
-            
-            <div className="mt-6 max-w-sm">
-              <h3 className="text-lg text-[#2d3748]">{data.experimentName}</h3>
-              <p className="text-xs text-[#a0aec0] mt-3">{data.courseCode}</p>
-            </div>
-          </div>
-
-          {/* Minimal info */}
-          <div className="grid grid-cols-2 gap-8 text-sm border-t border-[#f0f0f0] pt-8">
+          <div className="flex-1 space-y-6">
             <div>
-              <p className="text-xs uppercase tracking-wider text-[#a0aec0] mb-2">
-                {isBengali ? 'শিক্ষার্থী' : 'Student'}
-              </p>
-              <p className="font-medium text-[#2d3748]">{data.studentName}</p>
-              <p className="text-[#718096] text-xs">{data.studentId} | Group {data.group}</p>
+              <p className="text-2xl text-center uppercase font-bold text-[#1a365d] mb-8">{isBengali ? 'ল্যাব রিপোর্ট' : 'LAB REPORT'}</p>
+              <h1 className='text-xl uppercase font-bold text-[#d69e2e] mb-1'>{isBengali ? 'এক্সপেরিমেন্ট নং':'Experiment No'}: <span>{data.experimentNo}</span></h1>
+              <h1 className="text-xl font-bold text-[#1a365d]">{isBengali ? 'এক্সপেরিমেন্টের নাম' : 'Experiment Name'}: {data.experimentName}</h1>
             </div>
-            <div>
-              <p className="text-xs uppercase tracking-wider text-[#a0aec0] mb-2">
-                {isBengali ? 'শিক্ষক' : 'Instructor'}
-              </p>
-              <p className="font-medium text-[#2d3748]">{data.teacherName}</p>
-              <p className="text-[#718096] text-xs">{designationName}</p>
+            <div className="space-y-1 border-l-2 border-[#1a365d] pl-4">
+              <p className="text-[#718096] text-lg">{isBengali ? 'কোর্স কোড' : 'Course Code'}: {data.courseCode}</p>
+              <p className="text-[#718096] text-lg">{isBengali ? 'কোর্স নাম' : 'Course Name'}: {data.courseTitle}</p>
+              <p className="text-lg text-[#718096]">{isBengali ? 'এক্সপেরিমেন্টের তারিখ' : 'Date of Experiment'}: <span className="font-bold">{data.experimentDate}</span></p>
+              <p className="text-lg text-[#718096]">{isBengali ? 'জমা দেওয়ার তারিখ' : 'Date of Submission'}: <span className="font-bold">{data.submissionDate}</span></p>
             </div>
           </div>
-
-          <div className="text-center mt-6">
-            <p className="text-xs text-[#a0aec0]">{data.experimentDate} → {data.submissionDate}</p>
+          <div className="grid grid-cols-2 gap-12 mb-20">
+            <div className="space-y-4">
+              <p className="text-xl font-bold uppercase text-[#d69e2e]">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</p>
+              <div>
+                <p className="font-bold text-[#1a365d] text-lg">{data.studentName}</p>
+                <p className="text-md text-[#718096]">Roll: {data.roll}</p>
+                <p className="text-md text-[#718096]">ID: {data.studentId}</p>
+                <p className="text-md text-[#718096]">Batch: {data.batch}{data.section}</p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <p className="text-xl font-bold uppercase text-[#d69e2e]">{isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}</p>
+              <div>
+                <p className="font-bold text-[#1a365d] text-lg">{data.teacherName}</p>
+                <p className="text-md text-[#718096]">{designationName},</p>
+                <p className="text-md text-[#718096]">{departmentName}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
-  // Style 1 - Original
+  // --- STYLE 1 (Default Classic) ---
   return (
-    <div
-      ref={ref}
-      className={`w-[210mm] min-h-[297mm] bg-white p-12 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`}
-      style={{ aspectRatio: '210/297' }}
-    >
-      <div className="h-full border-4 border-double border-[#1a365d] p-8 flex flex-col relative">
-        {/* Corner decorations */}
-        <div className="absolute top-2 left-2 w-8 h-8 border-l-2 border-t-2 border-[#d69e2e]" />
-        <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-[#d69e2e]" />
-        <div className="absolute bottom-2 left-2 w-8 h-8 border-l-2 border-b-2 border-[#d69e2e]" />
-        <div className="absolute bottom-2 right-2 w-8 h-8 border-r-2 border-b-2 border-[#d69e2e]" />
-
-        {/* Header */}
-        <div className="text-center space-y-2 mb-6">
-          <h1 className="text-2xl font-display font-bold text-[#1a365d] uppercase tracking-wide">
-            {data.universityName}
-          </h1>
-          {/* <p className="text-lg text-[#4a5568] font-medium">{facultyName}</p> */}
-          <p className="text-base text-[#718096]">{departmentName}</p>
+    <div ref={ref} className={`w-[210mm] min-h-[297mm] bg-white p-12 mx-auto shadow-elevated ${isBengali ? 'font-bengali' : 'font-body'}`} style={{ aspectRatio: '210/297' }}>
+      <div className="cover-page-border h-full p-8 flex flex-col">
+        <div className="justify-center flex flex-col space-y-2 mb-8">
+          <img src="/wub.png" alt="wub-logo" />
+          <h2 className="text-center text-xl text-[#718096]">{departmentName}</h2>
         </div>
-
-        {/* Lab Report Title */}
-        <div className="text-center my-6">
-          <div className="inline-block">
-            <h2 className="text-2xl font-display font-bold text-[#1a365d] px-8 py-3 border-y-2 border-[#1a365d]">
-              {isBengali ? 'ল্যাব রিপোর্ট' : 'LAB REPORT'}
-            </h2>
+        <div className="flex items-center gap-4 my-6">
+          <div className="flex-1 h-px bg-[#1a365d]/30" />
+          <div className="w-3 h-3 rotate-45 border-2 border-[#1a365d]" />
+          <div className="flex-1 h-px bg-[#1a365d]/30" />
+        </div>
+        <div className="text-center space-y-4 my-4">
+          <h2 className="text-xl font-display font-semibold text-[#2d3748]">{isBengali ? 'ল্যাব রিপোর্ট' : 'LAB REPORT'}</h2>
+          <div className="inline-block px-8 py-2 border-2 border-[#1a365d] rounded-lg">
+             <p className="text-lg font-medium text-[#1a365d]">{isBengali ? 'এক্সপেরিমেন্ট নং' : 'Experiment No'}: {data.experimentNo}</p>
           </div>
         </div>
-
-        {/* Experiment Info */}
-        <div className="bg-gradient-to-r from-[#1a365d]/5 to-[#d69e2e]/5 rounded-lg p-6 my-4 border border-[#1a365d]/20">
-          <div className="text-center space-y-2">
-            <p className="text-lg">
-              <span className="font-medium text-[#718096]">{isBengali ? 'এক্সপেরিমেন্ট নং' : 'Experiment No'}:</span>{' '}
-              <span className="font-bold text-[#1a365d] text-xl">{data.experimentNo}</span>
-            </p>
-            <h3 className="text-xl font-display font-semibold text-[#2d3748] mt-4">
-              {data.experimentName}
-            </h3>
-          </div>
+        <div className="bg-[#f7fafc] rounded-lg p-4 my-6">
+          <table className="w-full text-left">
+            <tbody>
+              <tr>
+                <td className="py-1 font-semibold text-[#718096] w-1/3">{isBengali ? 'এক্সপেরিমেন্টের নাম' : 'Experiment Name'}:</td>
+                <td className="py-1 text-[#2d3748] font-bold">{data.experimentName}</td>
+              </tr>
+              <tr>
+                <td className="py-1 font-semibold text-[#718096]">{isBengali ? 'কোর্স কোড' : 'Course Code'}:</td>
+                <td className="py-1 text-[#2d3748] font-bold">{data.courseCode}</td>
+              </tr>
+              <tr>
+                <td className="py-1 font-semibold text-[#718096]">{isBengali ? 'কোর্স নাম' : 'Course Name'}:</td>
+                <td className="py-1 text-[#2d3748] font-bold">{data.courseTitle}</td>
+              </tr>
+              <tr>
+                <td className="py-1 font-semibold text-[#718096]">{isBengali ? 'পরীক্ষণের তারিখ' : 'Date of Experiment'}:</td>
+                <td className="py-1 text-[#2d3748] font-bold">{data.experimentDate}</td>
+              </tr>
+              <tr>
+                <td className="py-1 font-semibold text-[#718096]">{isBengali ? 'জমা দেওয়ার তারিখ' : 'Date of Submission'}:</td>
+                <td className="py-1 text-[#2d3748] font-bold">{data.submissionDate}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        {/* Course Info */}
-        <div className="bg-[#f7fafc] rounded-lg p-4 my-4">
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <p><span className="text-[#718096]">{isBengali ? 'কোর্স কোড' : 'Course Code'}:</span> <span className="font-semibold text-[#2d3748]">{data.courseCode}</span></p>
-            <p><span className="text-[#718096]">{isBengali ? 'কোর্স শিরোনাম' : 'Course Title'}:</span> <span className="font-semibold text-[#2d3748]">{data.courseTitle}</span></p>
-          </div>
-        </div>
-
-        {/* Submitted By & To */}
         <div className="flex-1 flex items-center">
           <div className="w-full grid grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg border border-[#e2e8f0] p-4">
-              <h3 className="text-sm font-semibold text-[#1a365d] uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#1a365d] rounded-full" />
-                {isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}
-              </h3>
-              <div className="space-y-2 text-sm">
+            <div className="space-y-3">
+              <h3 className="text-sm font-semibold text-[#1a365d] uppercase tracking-wider border-b border-[#1a365d] pb-2">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</h3>
+              <div className="space-y-1 text-sm">
                 <p><span className="text-[#718096]">{isBengali ? 'নাম' : 'Name'}:</span> <span className="font-medium text-[#2d3748]">{data.studentName}</span></p>
+                <p><span className="text-[#718096]">{isBengali ? 'রোল' : 'Roll'}:</span> <span className="font-medium text-[#2d3748]">{data.roll}</span></p>
                 <p><span className="text-[#718096]">{isBengali ? 'আইডি' : 'ID'}:</span> <span className="font-medium text-[#2d3748]">{data.studentId}</span></p>
-                <p><span className="text-[#718096]">{isBengali ? 'সেমিস্টার' : 'Semester'}:</span> <span className="font-medium text-[#2d3748]">{data.semester}</span></p>
-                <p><span className="text-[#718096]">{isBengali ? 'সেকশন' : 'Section'}:</span> <span className="font-medium text-[#2d3748]">{data.section}</span></p>
-                <p><span className="text-[#718096]">{isBengali ? 'গ্রুপ' : 'Group'}:</span> <span className="font-medium text-[#2d3748]">{data.group}</span></p>
+                <p><span className="text-[#718096]">{isBengali ? 'ব্যাচ' : 'Batch'}:</span> <span className="font-medium text-[#2d3748]">{data.batch}{data.section}</span></p>
               </div>
             </div>
-
-            <div className="bg-white rounded-lg border border-[#e2e8f0] p-4">
-              <h3 className="text-sm font-semibold text-[#1a365d] uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#d69e2e] rounded-full" />
-                {isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}
-              </h3>
-              <div className="space-y-2 text-sm">
+            <div className="space-y-3">
+              <h3 className="text-sm font-semibold text-[#1a365d] uppercase tracking-wider border-b border-[#1a365d] pb-2">{isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}</h3>
+              <div className="space-y-1 text-sm">
                 <p><span className="text-[#718096]">{isBengali ? 'নাম' : 'Name'}:</span> <span className="font-medium text-[#2d3748]">{data.teacherName}</span></p>
                 <p><span className="text-[#718096]">{isBengali ? 'পদবী' : 'Designation'}:</span> <span className="font-medium text-[#2d3748]">{designationName}</span></p>
-                <p><span className="text-[#718096]">{isBengali ? 'বিভাগ' : 'Dept'}:</span> <span className="font-medium text-[#2d3748]">{departmentName}</span></p>
+                <p><span className="text-[#718096]">{isBengali ? 'ডিপার্টমেন্ট' : 'Department'}:</span> <span className="font-medium text-[#2d3748]">{departmentName}</span></p>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="pt-6 border-t-2 border-[#1a365d]/30 mt-6">
-          <div className="flex justify-between text-sm">
-            <p>
-              <span className="text-[#718096]">{isBengali ? 'এক্সপেরিমেন্টের তারিখ' : 'Experiment Date'}:</span>{' '}
-              <span className="font-semibold text-[#2d3748]">{data.experimentDate}</span>
-            </p>
-            <p>
-              <span className="text-[#718096]">{isBengali ? 'জমা দেওয়ার তারিখ' : 'Submission Date'}:</span>{' '}
-              <span className="font-semibold text-[#2d3748]">{data.submissionDate}</span>
-            </p>
           </div>
         </div>
       </div>
@@ -379,5 +293,4 @@ const LabReportTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, sty
 });
 
 LabReportTemplate.displayName = 'LabReportTemplate';
-
 export default LabReportTemplate;
