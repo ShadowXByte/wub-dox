@@ -117,35 +117,37 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
           <div className="flex-1 flex flex-col px-12 py-8">
             {/* Header */}
             <div className="text-center space-y-4 mb-8">
-              <div className="inline-block px-6 py-2 border-b-2 border-[#d69e2e]">
-                <h1 className="text-xl font-display font-bold text-[#1a365d] uppercase tracking-[0.2em]">
+              <div className="inline-flex flex-col items-center gap-4 px-6 py-2 border-b-2 border-[#d69e2e]">
+                <img src="/wub_logo_j.png" alt="wub-logo" className="w-40"/>
+                <h1 className="text-xl text-center font-display font-bold text-[#1a365d] uppercase tracking-[0.2em]">
                   {data.universityName}
                 </h1>
               </div>
               {/* <p className="text-base text-[#4a5568]">{facultyName}</p> */}
-              <p className="text-sm text-[#718096]">{departmentName}</p>
+              <p className="text-lg text-[#718096]">{departmentName}</p>
             </div>
 
-            {/* Elegant assignment title */}
-            <div className="text-center my-8">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#718096] mb-2">
-                {isBengali ? 'অ্যাসাইনমেন্ট' : 'Assignment'}
-              </p>
-              <div className="inline-block">
-                <span className="text-6xl font-display font-bold text-[#1a365d]">{data.assignmentNo}</span>
-              </div>
-            </div>
+        {/* Assignment Info */}
+        <div className="text-center space-y-4 my-4">
+          <h2 className="text-xl font-display font-semibold text-[#2d3748]">
+            {isBengali ? 'অ্যাসাইনমেন্ট' : 'ASSIGNMENT'}
+          </h2>
+          <div className="inline-block px-8 py-3 border-2 border-[#1a365d] rounded-lg">
+            <p className="text-lg font-medium text-[#1a365d]">
+              {isBengali ? 'অ্যাসাইনমেন্ট নং' : 'Assignment No'}: {data.assignmentNo}
+            </p>
+          </div>
+        </div>
 
             {/* Course Info - Elegant cards */}
-            <div className="my-6 space-y-4 text-center">
-              <div className="inline-block px-8 py-3 border border-[#e2e8f0] rounded-sm">
-                <p className="text-xs text-[#718096] uppercase tracking-wider">{isBengali ? 'কোর্স কোড' : 'Course Code'}</p>
-                <p className="text-lg font-bold text-[#1a365d]">{data.courseCode}</p>
+            <div className="my-2 space-y-1 text-start px-8">
+              <div className="inline-flex flex-col px-8 py-3">
+                <p className="text-lg font-bold text-[#1a365d] uppercase ">{isBengali ? 'কোর্স কোড' : 'Course Code'}: {data.courseCode}</p>
+                <p className="text-lg font-bold text-[#2d3748] uppercase">{isBengali ? 'কোর্স নাম' : 'Course Name'}: {data.courseTitle}</p>
               </div>
-              <p className="text-lg text-[#2d3748]">{data.courseTitle}</p>
               {data.assignmentTitle && (
-                <p className="text-base text-[#4a5568] italic border-l-2 border-[#d69e2e] pl-4 mx-auto max-w-md">
-                  {data.assignmentTitle}
+                <p className="text-lg text-[#2d3748] italic border-l-2 border-[#d69e2e] pl-4 mx-auto max-w-md">
+                  "{data.assignmentTitle}"
                 </p>
               )}
             </div>
@@ -154,11 +156,15 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
             <div className="flex-1 flex items-center">
               <div className="w-full space-y-8">
                 <div className="text-center">
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
+                  <p className="text-base uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
                     {isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}
                   </p>
-                  <p className="text-xl font-display font-semibold text-[#1a365d]">{data.studentName}</p>
-                  <p className="text-sm text-[#718096]">ID: {data.studentId} | {data.semester} Semester | Section {data.section}</p>
+                  <p className="text-xl font-display font-semibold text-[#1a365d]">{isBengali ? 'নাম' : 'Name'}: {data.studentName}</p>
+                  <div className="text-start mx-48">
+                    <p><span className="text-lg text-[#718096]">{isBengali ? 'রোল' : 'Roll'}:</span> <span className="font-medium text-[#2d3748]">{data.roll}</span></p>
+                    <p><span className="text-lg text-[#718096]">{isBengali ? 'আইডি' : 'ID'}:</span> <span className="font-medium text-[#2d3748]">{data.studentId}</span></p>
+                    <p><span className="text-lg text-[#718096]">{isBengali ? 'ব্যাচ' : 'Batch'}:</span> <span className="font-medium text-[#2d3748]">{data.batch}{data.section}</span></p>
+                  </div>
                 </div>
                 
                 <div className="flex justify-center">
@@ -166,12 +172,12 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
                 </div>
                 
                 <div className="text-center">
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
+                  <p className="text-base uppercase tracking-[0.2em] text-[#d69e2e] mb-3">
                     {isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}
                   </p>
                   <p className="text-xl font-display font-semibold text-[#1a365d]">{data.teacherName}</p>
-                  <p className="text-sm text-[#718096]">{designationName}</p>
-                  <p className="text-sm text-[#718096]">{departmentName}</p>
+                  <p className="text-base font-semibold text-[#2d3748]">{designationName}</p>
+                  <p className="text-sm text-[#2d3748]">{departmentName}</p>
                 </div>
               </div>
             </div>
