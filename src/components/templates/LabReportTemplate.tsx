@@ -57,9 +57,9 @@ const LabReportTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, sty
                 <h3 className="text-xs font-bold text-[#1a365d] uppercase tracking-wider mb-3">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</h3>
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-[#2d3748]">{data.studentName}</p>
-                  <p className="text-[#718096]">Roll: {data.roll}</p>
-                  <p className="text-[#718096]">ID: {data.studentId}</p>
-                  <p className="text-[#718096]">Batch: {data.batch}{data.section}</p>
+                  <p className="text-[#718096]">{isBengali ? 'রোল':'Roll'}: {data.roll}</p>
+                  <p className="text-[#718096]">{isBengali ? 'আইডি':'ID'}: {data.studentId}</p>
+                  <p className="text-[#718096]">{isBengali ? 'ব্যাচ':'Batch'}: {data.batch}{data.section}</p>
                 </div>
               </div>
               <div className="p-4 bg-[#f7fafc] border-l-4 border-[#d69e2e]">
@@ -202,9 +202,9 @@ return (
               <p className="text-xl font-bold uppercase text-[#d69e2e]">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</p>
               <div>
                 <p className="font-bold text-[#1a365d] text-lg">{data.studentName}</p>
-                <p className="text-md text-[#718096]">Roll: {data.roll}</p>
-                <p className="text-md text-[#718096]">ID: {data.studentId}</p>
-                <p className="text-md text-[#718096]">Batch: {data.batch}{data.section}</p>
+                <p className="text-md text-[#718096]">{isBengali ? 'রোল':'Roll'}: {data.roll}</p>
+                <p className="text-md text-[#718096]">{isBengali ? 'আইডি':'ID'}: {data.studentId}</p>
+                <p className="text-md text-[#718096]">{isBengali ? 'ব্যাচ':'Batch'}: {data.batch}{data.section}</p>
               </div>
             </div>
             <div className="space-y-4">

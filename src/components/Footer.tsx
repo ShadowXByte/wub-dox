@@ -105,10 +105,12 @@ const Footer = () => {
           <p className="text-slate-500 font-medium tracking-tight">
             © {new Date().getFullYear()} — {isBengali ? 'WUB DOX। সর্বস্বত্ব সংরক্ষিত।' : 'WUB DOX. All rights reserved.'}
           </p>
-          
+          <p className="text-white/60">
+            Special Courtesy to <span className="text-teal-600 animate-pulse">CSE Batch 69C</span>
+          </p>
           <div className="flex items-center gap-1 text-slate-500 font-medium">
             <span>Developed by an</span>
-            <span className="text-red-500/70 mx-1 font-bold italic">enthusiast</span>
+            <span className="text-red-500/70 mx-1 font-bold italic animate-pulse">enthusiast</span>
             <a 
               href="https://github.com/alrifatsabbir" 
               target="_blank" 

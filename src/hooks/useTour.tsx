@@ -53,7 +53,7 @@ export const homeTourSteps: DriveStep[] = [
   {
     element: '#logo',
     popover: {
-      title: '🎓 Welcome to CoverGen!',
+      title: '🎓 Welcome to WUB DOX!',
       description: 'Create professional university cover pages in seconds. Let us show you around!',
       side: 'bottom',
       align: 'start',

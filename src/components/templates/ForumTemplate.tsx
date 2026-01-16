@@ -68,10 +68,10 @@ const ForumTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, style =
                 </h3>
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-lg text-[#2d3748]">{data.studentName}</p>
-                  <p className="text-[#718096]">Roll: {data.roll}</p>
-                  <p className="text-[#718096]">ID: {data.studentId}</p>
-                  <p className="text-[#718096]">Batch: {data.batch}{data.section}</p>
-                  <p className="text-[#718096]">Semester: {data.semester}</p>
+                  <p className="text-[#718096]">{isBengali ? 'রোল':'Roll'}: {data.roll}</p>
+                  <p className="text-[#718096]">{isBengali ? 'আইডি':'ID'}: {data.studentId}</p>
+                  <p className="text-[#718096]">{isBengali ? 'ব্যাচ':'Batch'}: {data.batch}{data.section}</p>
+                  <p className="text-[#718096]">{isBengali ? 'সেমিস্টার':'Semester'}: {data.semester}</p>
                   
                 </div>
               </div>

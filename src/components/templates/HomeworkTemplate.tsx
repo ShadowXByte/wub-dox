@@ -53,10 +53,10 @@ const HomeworkTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, styl
                 <h3 className="text-xs font-bold text-[#1a365d] uppercase tracking-wider mb-3">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</h3>
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-[#2d3748]">{data.studentName}</p>
-                  <p className="text-[#718096]">Roll: {data.roll}</p>
-                  <p className="text-[#718096]">ID: {data.studentId}</p>
-                  <p className="text-[#718096]">Batch: {data.batch}{data.section}</p>
-                  <p className="text-[#718096]">Semester: {data.semester}</p>
+                  <p className="text-[#718096]">{isBengali ? 'রোল':'Roll'}: {data.roll}</p>
+                  <p className="text-[#718096]">{isBengali ? 'আইডি':'ID'}: {data.studentId}</p>
+                  <p className="text-[#718096]">{isBengali ? 'ব্যাচ':'Batch'}: {data.batch}{data.section}</p>
+                  <p className="text-[#718096]">{isBengali ? 'সেমিস্টার':'Semester'}: {data.semester}</p>
                 </div>
               </div>
               <div className="p-4 bg-[#f7fafc] border-l-4 border-[#d69e2e]">
@@ -101,9 +101,9 @@ const HomeworkTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, styl
             <div className="text-center">
               <p className="text-base uppercase tracking-[0.2em] text-[#d69e2e] mb-3">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</p>
               <p className="text-xl font-display font-semibold text-[#1a365d]">{data.studentName}</p>
-              <p className="text-[#718096]">Roll: {data.roll}</p>
-              <p className="text-[#718096]">ID: {data.studentId}</p>
-              <p className="text-[#718096]">Batch: {data.batch}{data.section}</p>
+              <p className="text-[#718096]">{isBengali ? 'রোল':'Roll'}: {data.roll}</p>
+              <p className="text-[#718096]">{isBengali ? 'আইডি':'ID'}: {data.studentId}</p>
+              <p className="text-[#718096]">{isBengali ? 'ব্যাচ':'Batch'}: {data.batch}{data.section}</p>
             </div>
             <div className="text-center">
               <p className="text-base uppercase tracking-[0.2em] text-[#d69e2e] mb-3">{isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}</p>
@@ -144,9 +144,9 @@ const HomeworkTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, styl
             <div>
               <p className="text-lg font-semibold uppercase text-[#d69e2e] mb-3">{isBengali ? 'জমা দিয়েছেন' : 'Submitted By'}</p>
               <p className="font-bold text-[#1a365d] text-lg">{data.studentName}</p>
-              <p className="text-md text-[#718096]">ID: {data.roll}</p>
-              <p className="text-md text-[#718096]">ID: {data.studentId}</p>
-              <p className="text-md text-[#718096]">Batch: {data.batch}{data.section}</p>
+              <p className="text-md text-[#718096]">{isBengali ? 'রোল':'Roll'}: {data.roll}</p>
+              <p className="text-md text-[#718096]">{isBengali ? 'আইডি':'ID'}: {data.studentId}</p>
+              <p className="text-md text-[#718096]">{isBengali ? 'ব্যাচ':'Batch'}: {data.batch}{data.section}</p>
             </div>
             <div>
               <p className="text-lg font-semibold uppercase text-[#d69e2e] mb-3">{isBengali ? 'জমা দেওয়া হয়েছে' : 'Submitted To'}</p>

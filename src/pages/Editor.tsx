@@ -165,7 +165,7 @@ const Editor = () => {
               <Button variant="outline" size="sm" className="flex-1 md:flex-none" onClick={handleSave}>
                 <Save className="w-4 h-4 mr-1" /> {t('save')}
               </Button>
-              <Button size="sm" className="flex-1 md:flex-none" onClick={handlePrint}>
+              <Button id="print-btn" size="sm" className="flex-1 md:flex-none" onClick={handlePrint}>
                 <Printer className="w-4 h-4 mr-1" /> {t('print')}
               </Button>
             </div>
@@ -173,7 +173,7 @@ const Editor = () => {
 
           {/* STYLE & ZOOM CONTROLS */}
           <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-4">
-            <div className="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 no-scrollbar">
+            <div id="style-selector" className="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 no-scrollbar">
               {[1, 2, 3, 4].map(s => (
                 <Button
                   key={s}
@@ -187,7 +187,7 @@ const Editor = () => {
               ))}
             </div>
 
-            <div className="flex items-center gap-3 bg-muted/50 p-1.5 rounded-full border">
+            <div id="zoom-controls" className="flex items-center gap-3 bg-muted/50 p-1.5 rounded-full border">
               <Button
                 size="icon"
                 variant="ghost"
@@ -214,7 +214,7 @@ const Editor = () => {
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
 
             {/* EDITOR PANEL: Order 2 on mobile, 1 on desktop if needed */}
-            <div className="lg:col-span-4 xl:col-span-3 bg-card border rounded-2xl p-6 h-auto lg:h-[calc(100vh-200px)] overflow-y-auto shadow-sm order-2 lg:order-1 hide-scrollbar">
+            <div id="editor-form" className="lg:col-span-4 xl:col-span-3 bg-card border rounded-2xl p-6 h-auto lg:h-[calc(100vh-200px)] overflow-y-auto shadow-sm order-2 lg:order-1 hide-scrollbar">
               <CoverPageEditor
                 data={data}
                 onChange={setData}
@@ -223,7 +223,7 @@ const Editor = () => {
             </div>
 
             {/* PREVIEW PANEL */}
-            <div
+            <div id="preview-area"
               ref={previewRef}
               className="lg:col-span-6 xl:col-span-7 bg-muted/30 border rounded-2xl relative overflow-hidden h-[500px] md:h-[600px] lg:h-[calc(100vh-200px)] shadow-inner touch-none order-1 lg:order-2"
             >
