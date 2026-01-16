@@ -17,16 +17,16 @@ const Footer = () => {
     {
       title: isBengali ? 'ফলো করুন' : 'Follow Me',
       links: [
-        { name: 'LinkedIn', path: 'https://linkedin.com/in/alrifatsabbir', icon: Linkedin, external: true },
-        { name: 'GitHub', path: 'https://github.com/alrifatsabbir', icon: Github, external: true },
-        { name: 'Facebook', path: 'https://facebook.com/alrifatsabbir1', icon: Facebook, external: true},
-        { name: 'Email', path: "mailto:alrifatsabbir@gmail.com", icon: Mails , external: true },
+        { name: isBengali ? 'লিংকড-ইন' : 'LinkedIn', path: 'https://linkedin.com/in/alrifatsabbir', icon: Linkedin, external: true },
+        { name: isBengali ? 'গিটহাব' : 'GitHub', path: 'https://github.com/alrifatsabbir', icon: Github, external: true },
+        { name: isBengali ? 'ফেসবুক' : 'Facebook', path: 'https://facebook.com/alrifatsabbir1', icon: Facebook, external: true},
+        { name: isBengali ? 'ইমেইল' : 'Email', path: "mailto:alrifatsabbir@gmail.com", icon: Mails , external: true },
       ]
     },
     {
       title: isBengali ? 'আইনি তথ্য' : 'Legal',
       links: [
-        { name: isBengali ? 'প্রাইভেসি পলিসি' : 'Privacy Policy', path: '/privacy' },
+        { name: isBengali ? 'গোপনীয়তা নীতি' : 'Privacy Policy', path: '/privacy' },
         { name: isBengali ? 'শর্তাবলী' : 'Terms of Service', path: '/terms' },
         { name: isBengali ? 'লাইসেন্স' : 'License', path: '/license' },
       ]
@@ -52,7 +52,6 @@ const Footer = () => {
                 ? 'আপনার অ্যাসাইনমেন্ট এবং ল্যাব রিপোর্টের জন্য সেরা কভার পেজ জেনারেটর।' 
                 : 'Your ultimate companion for creating professional assignment cover pages.'}
               <br /><br />
-              Uttara, Dhaka,<br />Bangladesh
             </p>
             <div className="flex justify-center md:justify-start gap-5">
               {[
