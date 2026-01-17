@@ -75,12 +75,12 @@ const CoverPageEditor = ({ data, onChange, templateType }: CoverPageEditorProps)
 
       {type === 'select' && options ? (
         <Select value={data[field]} onValueChange={(value) => handleChange(field, value)}>
-          <SelectTrigger className={`w-full ${isBengali ? 'font-bengali' : ''}`}>
-            <SelectValue />
+          <SelectTrigger className={`w-full text-white placeholder:text-gray-400 bg-slate-700/50 border-slate-600 focus:ring-2 focus:ring-[#e7b008] focus:border-[#e7b008] ${isBengali ? 'font-bengali' : ''}`}>
+            <SelectValue className="text-white" />
           </SelectTrigger>
-          <SelectContent className="max-h-60">
+          <SelectContent className="bg-slate-800 text-white border-slate-600">
             {options.map(opt => (
-              <SelectItem key={opt.value} value={opt.value}>
+              <SelectItem key={opt.value} value={opt.value} className="text-gray-300 focus:bg-[#e7b008] focus:text-gray-800">
                 {opt.label}
               </SelectItem>
             ))}
@@ -91,7 +91,7 @@ const CoverPageEditor = ({ data, onChange, templateType }: CoverPageEditorProps)
           type={type}
           value={data[field]}
           onChange={(e) => handleChange(field, e.target.value)}
-          className={`w-full ${isBengali ? 'font-bengali' : ''}`}
+          className={`w-full text-white placeholder:text-gray-400 bg-slate-700/50 border-slate-600 focus:ring-2 focus:ring-[#e7b008] focus:border-[#e7b008] ${isBengali ? 'font-bengali' : ''}`}
         />
       )}
     </motion.div>
@@ -156,12 +156,12 @@ const CoverPageEditor = ({ data, onChange, templateType }: CoverPageEditorProps)
             value={data.facultyName}
             onValueChange={(value) => handleChange('facultyName', value)}
           >
-            <SelectTrigger className={`w-full ${isBengali ? 'font-bengali' : ''}`}>
-              <SelectValue />
+            <SelectTrigger className={`w-full text-white placeholder:text-gray-400 bg-slate-700/50 border-slate-600 focus:ring-2 focus:ring-[#e7b008] focus:border-[#e7b008] ${isBengali ? 'font-bengali' : ''}`}>
+              <SelectValue className="text-white" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-slate-800 text-white border-slate-600">
               {facultyOptions.map(opt => (
-                <SelectItem key={opt.value} value={opt.value}>
+                <SelectItem key={opt.value} value={opt.value} className="text-gray-300 focus:bg-[#e7b008] focus:text-gray-800">
                   {opt.label}
                 </SelectItem>
               ))}
@@ -218,12 +218,12 @@ const CoverPageEditor = ({ data, onChange, templateType }: CoverPageEditorProps)
         <h3 className="font-semibold">{t('submittedTo')}</h3>
 
         <Select value={data.teacherName} onValueChange={handleTeacherChange}>
-          <SelectTrigger>
-            <SelectValue placeholder={t('teacherName')} />
+          <SelectTrigger className="w-full text-white placeholder:text-gray-400 bg-slate-700/50 border-slate-600 focus:ring-2 focus:ring-[#e7b008] focus:border-[#e7b008]">
+            <SelectValue placeholder={t('teacherName')} className="text-gray-400" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-slate-800 text-white border-slate-600">
             {teacherOptions.map(opt => (
-              <SelectItem key={opt.value} value={opt.value}>
+              <SelectItem key={opt.value} value={opt.value} className="text-gray-300 focus:bg-[#e7b008] focus:text-gray-800">
                 {opt.label}
               </SelectItem>
             ))}

@@ -43,7 +43,7 @@
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(224 71% 25%), hsl(224 60% 35%));
-    --gradient-gold: linear-gradient(135deg, hsl(45 93% 47%), hsl(40 90% 55%));
+    --gradient-gold: linear-gradient(135deg, #e7b008, hsl(40 90% 55%));
     --gradient-hero: linear-gradient(180deg, hsl(220 20% 97%) 0%, hsl(224 30% 95%) 100%);
     
     /* Shadows */
@@ -218,7 +218,7 @@
 
 .driver-popover-dark .driver-popover-prev-btn,
 .driver-popover-dark .driver-popover-next-btn {
-  background: hsl(45, 93%, 55%) !important;
+  background: #f7c222 !important;
   color: hsl(222, 47%, 11%) !important;
   border: none !important;
   padding: 0.5rem 1rem !important;

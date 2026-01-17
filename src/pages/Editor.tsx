@@ -346,7 +346,7 @@ const Editor = () => {
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
 
             {/* EDITOR PANEL: Order 2 on mobile, 1 on desktop if needed */}
-            <div id="editor-form" className="lg:col-span-4 xl:col-span-3 bg-card border rounded-2xl p-6 h-auto lg:h-[calc(100vh-200px)] overflow-y-auto shadow-sm order-2 lg:order-1 hide-scrollbar">
+            <div id="editor-form" className="lg:col-span-4 xl:col-span-3 bg-card text-gray-300 border rounded-2xl p-6 h-auto lg:h-[calc(100vh-200px)] overflow-y-auto shadow-sm order-2 lg:order-1 hide-scrollbar">
               <CoverPageEditor
                 data={data}
                 onChange={setData}

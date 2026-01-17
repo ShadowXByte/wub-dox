@@ -50,7 +50,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen w-full relative overflow-hidden hide-scrollbar">
-      {/* Dynamic Background Layer (Navy/Gold Void) */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -58,7 +57,6 @@ const Index = () => {
         }}
       />
 
-      {/* LightRays Overlay */}
       <div className="absolute inset-0 z-[1] opacity-90 pointer-events-none">
         <LightRays
           raysOrigin="top-center"
@@ -71,7 +69,7 @@ const Index = () => {
           className="w-full h-full"
         />
       </div>
-      {/* Content Section */}
+
       <div className="relative z-10">
         <section className="pt-32 pb-20 px-4 min-h-screen">
           <div className="container mx-auto max-w-6xl">
@@ -85,7 +83,7 @@ const Index = () => {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 text-primary-foreground text-sm font-medium backdrop-blur-md border border-white/10"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 text-primary-foreground text-sm font-medium backdrop-blur-md border border-white/10 mx-auto"
               >
                 <Sparkles className="w-4 h-4 text-[#ffd]" />
                 <span className={isBengali ? 'text-[#ffd] font-bengali' : 'text-[#ffd]'}>
@@ -93,16 +91,20 @@ const Index = () => {
                 </span>
               </motion.div>
 
-              <h1 className={`text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white leading-tight ${isBengali ? 'font-bengali' : ''}`}>
-                <span className="block">
-                  <GradientText colors={["#fbbf24", "#f59e0b", "#d97706", "#fbbf24"]}>
-                    WUB DOX
-                  </GradientText>
-                  <span className="sm:ml-4">
-                    <BlurText text={isBengali ? "কভার পেজ জেনারেটর" : "Cover Page Generator"} delay={150} />
-                  </span>
-                </span>
-              </h1>
+<h1 className={`text-5xl sm:text-5xl md:text-7xl font-display font-bold text-white leading-tight w-full flex flex-col items-center ${isBengali ? 'font-bengali' : ''}`}>
+  <div className="w-full flex justify-center">
+    <GradientText colors={["#fbbf24", "#f59e0b", "#d97706", "#fbbf24"]} className="text-center">
+      WUB DOX
+    </GradientText>
+  </div>
+  <div className="w-full mt-2 sm:mt-0 flex justify-center">
+    <BlurText 
+      text={isBengali ? "কভার পেজ জেনারেটর" : "Cover Page Generator"} 
+      delay={150} 
+      className="justify-center text-center"
+    />
+  </div>
+</h1>
 
               <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-medium">
                 {t('heroSubtitle')}
@@ -112,6 +114,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
+                className="flex justify-center"
               >
                 <ShinyButton
                   onClick={() => navigate('/templates')}
@@ -127,7 +130,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Templates Section */}
         <section className="py-20 px-4 min-h-screen bg-black/20 backdrop-blur-md border-t border-white/5">
           <div className="container mx-auto max-w-6xl">
             <motion.div
