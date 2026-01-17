@@ -3,7 +3,7 @@
 WUB DOX is a specialized tool designed for students to generate professional university cover pages (Assignment, Lab Report, Forum, etc.) in seconds. It focuses on simplicity, speed, and privacy.
 
 <div align="center">
-  <img src="" alt="WUB-DOX">
+  <img src="https://wub-dox.vercel.app/wub-dox.png" alt="WUB-DOX">
 </div>
 
 ## ✨ Features
@@ -99,4 +99,5 @@ To run this project locally for learning purposes:
 ___
 
 <p align="center"><strong>Developed with ❤️ for the students of World University of Bangladesh.</strong></p>
+
 
