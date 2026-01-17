@@ -9,6 +9,7 @@ import {
   Save,
   ZoomIn,
   ZoomOut,
+  Download,
 } from 'lucide-react';
 import CoverPageEditor from '@/components/CoverPageEditor';
 import AssignmentTemplate from '@/components/templates/AssignmentTemplate';
@@ -37,8 +38,8 @@ const Editor = () => {
   const { toast } = useToast();
   const isBengali = i18n.language === 'bn';
 
-  const printRef = useRef<HTMLDivElement>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
+  const printContentRef = useRef<HTMLDivElement>(null);
+  const templateRef = useRef<HTMLDivElement>(null);
 
   /* ---------------- DATA ---------------- */
   const [data, setData] = useState<CoverPageData>(loadFromLocalStorage);
@@ -57,7 +58,7 @@ const Editor = () => {
 
   /* ---------------- PREVENT BROWSER ZOOM ---------------- */
   useEffect(() => {
-    const el = previewRef.current;
+    const el = printContentRef.current;
     if (!el) return;
 
     const wheelHandler = (e: WheelEvent) => {
@@ -72,18 +73,153 @@ const Editor = () => {
     return () => el.removeEventListener('wheel', wheelHandler);
   }, []);
 
+  /* ---------------- TEMPLATE RENDER ---------------- */
+  const renderTemplate = () => {
+    const props = { data, style };
+    switch (type) {
+      case 'assignment': return <AssignmentTemplate {...props} />;
+      case 'labReport': return <LabReportTemplate {...props} />;
+      case 'forum': return <ForumTemplate {...props} />;
+      case 'homework': return <HomeworkTemplate {...props} />;
+      default: return <AssignmentTemplate {...props} />;
+    }
+  };
+
   /* ---------------- PRINT ---------------- */
   const handlePrint = useReactToPrint({
-    contentRef: printRef,
+    contentRef: templateRef,
     documentTitle: `${type}-cover-page`,
   });
+
+  /* ---------------- DOWNLOAD PDF ---------------- */
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = async () => {
+    if (!templateRef.current || isDownloading) return;
+
+    setIsDownloading(true);
+    toast({
+      title: isBengali ? 'তৈরি হচ্ছে...' : 'Preparing...',
+      description: isBengali ? 'অপেক্ষা করুন' : 'Please wait',
+    });
+
+    try {
+      // Dynamically import libraries
+      const html2canvas = (await import('html2canvas')).default;
+      const { jsPDF } = await import('jspdf');
+      const domToImage = (await import('dom-to-image')).default;
+
+      const element = templateRef.current;
+
+      // Create a wrapper
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'width: 794px; height: 1123px; background: white;';
+      
+      // Clone the element
+      const clone = element.cloneNode(true) as HTMLElement;
+      clone.style.width = '794px';
+      clone.style.height = '1123px';
+      clone.style.background = 'white';
+      
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+
+      // Use dom-to-image for better rendering
+      const dataUrl = await domToImage.toPng(wrapper, {
+        quality: 1,
+        bgcolor: '#ffffff',
+        style: {
+          transform: 'none',
+          transformOrigin: 'top left',
+        }
+      });
+
+      document.body.removeChild(wrapper);
+
+      // Create canvas from data URL
+      const img = new Image();
+      img.src = dataUrl;
+      
+      await new Promise((resolve) => { img.onload = resolve; });
+
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+      });
+
+      const imgWidth = 210;
+      const imgHeight = (img.height * imgWidth) / img.width;
+
+      pdf.addImage(dataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save(`${type}-cover-page.pdf`);
+
+      toast({
+        title: isBengali ? 'সফল!' : 'Success!',
+        description: isBengali ? 'ফাইল ডাউনলোড হয়েছে' : 'File downloaded',
+      });
+    } catch (error) {
+      console.error('Download error:', error);
+      // Fallback to html2canvas
+      try {
+        const html2canvas = (await import('html2canvas')).default;
+        const { jsPDF } = await import('jspdf');
+        
+        const element = templateRef.current;
+        
+        const wrapper = document.createElement('div');
+        wrapper.style.cssText = 'position: fixed; left: 0; top: 0; width: 794px; background: white;';
+        const clone = element.cloneNode(true) as HTMLElement;
+        clone.style.cssText = 'width: 794px; background: white;';
+        wrapper.appendChild(clone);
+        document.body.appendChild(wrapper);
+        
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
+        const canvas = await html2canvas(wrapper, {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: '#ffffff',
+        });
+        
+        document.body.removeChild(wrapper);
+        
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4',
+        });
+        
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save(`${type}-cover-page.pdf`);
+        
+        toast({
+          title: isBengali ? 'সফল!' : 'Success!',
+          description: isBengali ? 'ফাইল ডাউনলোড হয়েছে' : 'File downloaded',
+        });
+      } catch (fallbackError) {
+        console.error('Fallback error:', fallbackError);
+        toast({
+          title: isBengali ? 'সমস্যা!' : 'Error!',
+          description: isBengali ? 'ডাউনলোড ব্যর্থ হয়েছে' : 'Download failed',
+          variant: 'destructive',
+        });
+      }
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   /* ---------------- ACTIONS ---------------- */
   const handleSave = () => {
     saveToLocalStorage(data);
     toast({
       title: isBengali ? 'সংরক্ষিত!' : 'Saved!',
-      description: isBengali ? 'আপনার তথ্য সংরক্ষণ করা হয়েছে' : 'Your data has been saved',
+      description: isBengali ? 'আপনার তথ্য সংরক্ষণ করা হয়েছে' : 'Your data has been saved',
     });
   };
 
@@ -93,7 +229,7 @@ const Editor = () => {
     setPosition({ x: 20, y: 20 });
     toast({
       title: isBengali ? 'রিসেট!' : 'Reset!',
-      description: isBengali ? 'সব তথ্য মুছে ফেলা হয়েছে' : 'All data cleared',
+      description: isBengali ? 'সব তথ্য মুছে ফেলা হয়েছে' : 'All data cleared',
     });
   };
 
@@ -115,18 +251,6 @@ const Editor = () => {
   };
 
   const stopDragging = () => setIsDragging(false);
-
-  /* ---------------- TEMPLATE RENDER ---------------- */
-  const renderTemplate = () => {
-    const props = { ref: printRef, data, style };
-    switch (type) {
-      case 'assignment': return <AssignmentTemplate {...props} />;
-      case 'labReport': return <LabReportTemplate {...props} />;
-      case 'forum': return <ForumTemplate {...props} />;
-      case 'homework': return <HomeworkTemplate {...props} />;
-      default: return <AssignmentTemplate {...props} />;
-    }
-  };
 
   const templateTitle = {
     assignment: t('assignment'),
@@ -161,7 +285,19 @@ const Editor = () => {
               <Button variant="outline" size="sm" className="flex-1 md:flex-none" onClick={handleSave}>
                 <Save className="w-4 h-4 mr-1" /> {t('save')}
               </Button>
-              <Button id="print-btn" size="sm" className="flex-1 md:flex-none" onClick={handlePrint}>
+              {/* Download button for mobile/tablet */}
+              <Button
+                id="download-btn"
+                size="sm"
+                className="flex-1 md:flex-none md:hidden"
+                onClick={handleDownload}
+                disabled={isDownloading}
+              >
+                <Download className="w-4 h-4 mr-1" />
+                {isDownloading ? (isBengali ? 'হচ্ছে...' : '...') : (isBengali ? 'ডাউনলোড' : 'Download')}
+              </Button>
+              {/* Print button for desktop */}
+              <Button id="print-btn" size="sm" className="flex-1 md:flex-none hidden md:inline-flex" onClick={handlePrint}>
                 <Printer className="w-4 h-4 mr-1" /> {t('print')}
               </Button>
             </div>
@@ -220,7 +356,6 @@ const Editor = () => {
 
             {/* PREVIEW PANEL */}
             <div id="preview-area"
-              ref={previewRef}
               className="lg:col-span-6 xl:col-span-7 bg-muted/30 border rounded-2xl relative overflow-hidden h-[500px] md:h-[600px] lg:h-[calc(100vh-200px)] shadow-inner touch-none order-1 lg:order-2"
             >
               <div
@@ -233,7 +368,7 @@ const Editor = () => {
                 onTouchMove={(e) => moveDragging(e.touches[0].clientX, e.touches[0].clientY)}
                 onTouchEnd={stopDragging}
               >
-                <div
+                <div ref={printContentRef}
                   style={{
                     transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                     transformOrigin: '0 0',
@@ -241,10 +376,12 @@ const Editor = () => {
                     transition: isDragging ? 'none' : 'transform 0.1s ease-out',
                   }}
                 >
-                  {renderTemplate()}
+                  <div ref={templateRef} className="template-container">
+                    {renderTemplate()}
+                  </div>
                 </div>
               </div>
-              
+
               {/* Mobile Hint */}
               <div className="absolute bottom-4 right-4 bg-black/50 text-white text-[10px] px-2 py-1 rounded md:hidden pointer-events-none">
                 Drag to pan • Use +/- to zoom
