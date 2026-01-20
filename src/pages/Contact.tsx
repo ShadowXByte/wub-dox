@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, MessageSquare, MapPin } from 'lucide-react';
 
-
 const Contact = () => {
   const { t, i18n } = useTranslation();
   const isBengali = i18n.language === 'bn';
@@ -40,6 +39,48 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <div className="sr-only">
+        <h1>Contact WUB DOX Developer - {isBengali ? "যোগাযোগ করুন" : "Get in Touch"}</h1>
+        <p>
+          {isBengali 
+            ? "WUB DOX এর ডেভেলপার আল রিফাত সাব্বির এর সাথে যোগাযোগ করুন। যেকোনো প্রশ্ন, কাস্টমাইজেশন বা সাপোর্টের জন্য ইমেইল বা সোশ্যাল মিডিয়া ব্যবহার করুন।" 
+            : "Contact Al Rifat Sabbir, the developer of WUB DOX. Reach out for support, inquiries, or feedback regarding cover page generation and university documentation."}
+        </p>
+        <address>
+          Al Rifat Sabbir<br />
+          World University of Bangladesh, Uttara, Dhaka<br />
+          Email: alrifatsabbir@gmail.com<br />
+          WhatsApp: +8801688525596
+        </address>
+                <nav className="sr-only">
+                  {/* WUB DOX Internal Links */}
+                  <a href="/">Home</a>
+                  <a href="/templates">All Cover Page Templates</a>
+                  <a href="/editor/assignment">Assignment Cover Page Generator</a>
+                  <a href="/editor/labReport">University Lab Report Cover Page</a>
+                  <a href="/editor/forum">Academic Forum Presentation Cover Page</a>
+                  <a href="/editor/homework">Simple Homework Cover Page</a>
+                  <a href="/blogs">Blogs about WUB DOX</a>
+                  <a href="/privacy">Privacy Policy</a>
+                  <a href="/terms">Terms of Service</a>   
+                  {/* Project & Developer Social Links */}
+                  <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
+                  <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
+                  <a href="https://linkedin.com/in/alrifatsabbir" rel="external noopener noreferrer">LinkedIn Profile</a>
+                  <a href="https://facebook.com/alrifatsabbir1" rel="external noopener noreferrer">Facebook Page</a>
+                  <a href="https://twitter.com/alrifatsabbir" rel="external noopener noreferrer">Twitter / X Profile</a>
+                  <a href="https://instagram.com/alrifatsabbir" rel="external noopener noreferrer">Instagram Profile</a>
+                  <a href="https://behance.net/alrifatsabbir" rel="external noopener noreferrer">Behance Portfolio</a>
+                  <a href="https://stackoverflow.com/users/24326530/alrifatsabbir" rel="external noopener noreferrer">Stack Overflow Profile</a>
+                  <a href="https://dribbble.com/alrifatsabbir" rel="external noopener noreferrer">Dribbble Design Portfolio</a>
+                  <a href="https://youtube.com/@alrifatsabbir" rel="external noopener noreferrer">YouTube Channel</a>
+                  <a href="https://medium.com/@alrifatsabbir" rel="external noopener noreferrer">Medium Blog</a>
+                  <a href="https://dev.to/alrifatsabbir" rel="external noopener noreferrer">DEV Community Profile</a>
+                  <a href="https://codepen.io/alrifatsabbir" rel="external noopener noreferrer">CodePen Profile</a>
+                  <a href="https://wa.me/+8801688525596" rel="external noopener noreferrer">Whatsapp</a>
+                </nav>
+      </div>
+
       <main className="pt-32 pb-12 px-4">
         <div className="container mx-auto max-w-3xl">
           <motion.div 
@@ -47,9 +88,9 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h1 className={`text-4xl md:text-5xl font-display font-bold text-foreground mb-4 ${isBengali ? 'font-bengali' : ''}`}>
+            <div className={`text-4xl md:text-5xl font-display font-bold text-foreground mb-4 ${isBengali ? 'font-bengali' : ''}`}>
               {isBengali ? 'যোগাযোগ করুন' : 'Contact Us'}
-            </h1>
+            </div>
             <p className={`text-lg text-muted-foreground max-w-lg mx-auto ${isBengali ? 'font-bengali' : ''}`}>
               {isBengali 
                 ? 'আপনার কোনো প্রশ্ন বা পরামর্শ থাকলে নিচের যেকোনো মাধ্যমে সরাসরি যোগাযোগ করতে পারেন।' 
@@ -57,7 +98,6 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          {/* Contact Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
             {contactDetails.map((item, index) => (
               <motion.a
@@ -87,7 +127,6 @@ const Contact = () => {
             ))}
           </div>
 
-          {/* Map Section */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -12,7 +12,7 @@ const Footer = () => {
       links: [
         { name: isBengali ? 'টেমপ্লেটস' : 'Templates', path: '/templates' },
         { name: isBengali ? 'যোগাযোগ' : 'Contact', path: '/contact' },
-        { name: isBengali ? '' : 'Blogs', path: '/blogs'},
+        { name: isBengali ? 'ব্লগ' : 'Blogs', path: '/blogs'},
       ]
     },
     {
@@ -27,7 +27,7 @@ const Footer = () => {
     {
       title: isBengali ? 'আইনি তথ্য' : 'Legal',
       links: [
-        { name: isBengali ? 'গোপনীয়তা নীতি' : 'Privacy Policy', path: '/privacy' },
+        { name: isBengali ? 'গোপনীয়তা নীতি' : 'Privacy Policy', path: '/privacy' },
         { name: isBengali ? 'শর্তাবলী' : 'Terms of Service', path: '/terms' },
         { name: isBengali ? 'লাইসেন্স' : 'License', path: '/license' },
       ]
@@ -39,12 +39,11 @@ const Footer = () => {
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
-          {/* Brand Column with Image Logo */}
           <div className="space-y-6 text-center md:text-left">
             <Link to="/" className="inline-block transition-transform hover:scale-105 duration-300">
               <img 
                 src="/wub-dow2.png" 
-                alt="Logo" 
+                alt="WUB DOX" 
                 className="h-32 w-auto object-contain"
               />
             </Link>
@@ -63,6 +62,8 @@ const Footer = () => {
                 <a 
                   key={idx}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-500 hover:text-[#fbbf24] transform hover:-translate-y-1 transition-all duration-300"
                 >
                   <social.Icon size={20} />
@@ -71,7 +72,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links Columns */}
           <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
             {footerSections.map((section) => (
               <div key={section.title} className="space-y-6">
@@ -82,16 +82,29 @@ const Footer = () => {
                 <ul className="space-y-3">
                   {section.links.map((link) => (
                     <li key={link.name}>
-                      <Link 
-                        to={link.path} 
-                        className="text-slate-400 hover:text-white text-sm transition-all duration-300 flex items-center gap-2 group w-fit"
-                      >
-                        {link.icon && <link.icon size={14} className="group-hover:text-[#fbbf24] transition-colors" />}
-                        <span className="group-hover:translate-x-1 group-hover:text-white transition-transform duration-300">
-                          {link.name}
-                        </span>
-                        {link.external && <ExternalLink size={10} className="opacity-30 group-hover:opacity-100 transition-opacity" />}
-                      </Link>
+                      {link.external ? (
+                        <a 
+                          href={link.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-slate-400 hover:text-white text-sm transition-all duration-300 flex items-center gap-2 group w-fit"
+                        >
+                          {link.icon && <link.icon size={14} className="group-hover:text-[#fbbf24] transition-colors" />}
+                          <span className="group-hover:translate-x-1 group-hover:text-white transition-transform duration-300">
+                            {link.name}
+                          </span>
+                          {link.external && <ExternalLink size={10} className="opacity-30 group-hover:opacity-100 transition-opacity" />}
+                        </a>
+                      ) : (
+                        <Link 
+                          to={link.path} 
+                          className="text-slate-400 hover:text-white text-sm transition-all duration-300 flex items-center gap-2 group w-fit"
+                        >
+                          <span className="group-hover:translate-x-1 group-hover:text-white transition-transform duration-300">
+                            {link.name}
+                          </span>
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -100,7 +113,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[13px]">
           <p className="text-slate-500 font-medium tracking-tight">
             © {new Date().getFullYear()} — {isBengali ? 'WUB DOX। সর্বস্বত্ব সংরক্ষিত।' : 'WUB DOX. All rights reserved.'}
@@ -114,6 +126,7 @@ const Footer = () => {
             <a 
               href="https://github.com/alrifatsabbir" 
               target="_blank" 
+              rel="noopener noreferrer"
               className="text-[#fbbf24] hover:text-[#f59e0b] font-bold transition-all ml-1 underline decoration-transparent hover:decoration-[#fbbf24]"
             >
                Al Rifat Sabbir

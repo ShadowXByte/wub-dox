@@ -8,7 +8,7 @@ export default function Privacy() {
     {
       title: isBengali ? "১. ভূমিকা" : "1. Introduction",
       desc: isBengali 
-      ? 'WUB DOX আপনার গোপনীয়তা রক্ষায় প্রতিশ্রুতিবদ্ধ। এই গোপনীয়তা নীতি আমাদের ওয়েবসাইট এবং পরিষেবা ব্যবহারের সময় আপনার তথ্য সংগ্রহ, ব্যবহার এবং সুরক্ষার পদ্ধতি ব্যাখ্যা করে।' 
+      ? 'WUB DOX আপনার গোপনীয়তা রক্ষায় প্রতিশ্রুতিবদ্ধ। এই গোপনীয়তা নীতি আমাদের ওয়েবসাইট এবং পরিষেবা ব্যবহারের সময় আপনার তথ্য সংগ্রহ, ব্যবহার এবং সুরক্ষার পদ্ধতি ব্যাখ্যা করে।' 
       : 'WUB DOX is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose and safeguard your information when you visit our website and use our services.'
     },
     {
@@ -93,12 +93,53 @@ export default function Privacy() {
 
   return (
     <div className={`container mx-auto px-4 py-24 max-w-4xl ${isBengali ? 'font-bengali' : 'font-body'}`}>
-      <h1 className="text-4xl md:text-5xl font-bold mb-8 border-b pb-4">
+      
+      {/* SEO & Search Engine Visibility */}
+      <div className="sr-only">
+        <h1>WUB DOX Privacy Policy - {isBengali ? "গোপনীয়তা নীতি" : "Your Data Security"}</h1>
+        <p>
+          {isBengali 
+            ? "WUB DOX আপনার একাডেমিক ডেটা সার্ভারে সংরক্ষণ করে না। আপনার নাম, আইডি এবং কোর্সের তথ্য শুধুমাত্র আপনার ব্রাউজারে লোকাল স্টোরেজে প্রসেস করা হয়।" 
+            : "WUB DOX does not store your academic data on any server. All processing including PDF generation happens client-side in your browser."}
+        </p>
+                <nav className="sr-only">
+                  {/* WUB DOX Internal Links */}
+                  <a href="/">Home</a>
+                  <a href="/templates">All Cover Page Templates</a>
+                  <a href="/editor/assignment">Assignment Cover Page Generator</a>
+                  <a href="/editor/labReport">University Lab Report Cover Page</a>
+                  <a href="/editor/forum">Academic Forum Presentation Cover Page</a>
+                  <a href="/editor/homework">Simple Homework Cover Page</a>
+                  <a href="/blogs">Blogs about WUB DOX</a>
+                  <a href="/contact">Contact Developer</a>
+                  <a href="/terms">Terms of Service</a>   
+                  {/* Project & Developer Social Links */}
+                  <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
+                  <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
+                  <a href="https://linkedin.com/in/alrifatsabbir" rel="external noopener noreferrer">LinkedIn Profile</a>
+                  <a href="https://facebook.com/alrifatsabbir1" rel="external noopener noreferrer">Facebook Page</a>
+                  <a href="https://twitter.com/alrifatsabbir" rel="external noopener noreferrer">Twitter / X Profile</a>
+                  <a href="https://instagram.com/alrifatsabbir" rel="external noopener noreferrer">Instagram Profile</a>
+                  <a href="https://behance.net/alrifatsabbir" rel="external noopener noreferrer">Behance Portfolio</a>
+                  <a href="https://stackoverflow.com/users/24326530/alrifatsabbir" rel="external noopener noreferrer">Stack Overflow Profile</a>
+                  <a href="https://dribbble.com/alrifatsabbir" rel="external noopener noreferrer">Dribbble Design Portfolio</a>
+                  <a href="https://youtube.com/@alrifatsabbir" rel="external noopener noreferrer">YouTube Channel</a>
+                  <a href="https://medium.com/@alrifatsabbir" rel="external noopener noreferrer">Medium Blog</a>
+                  <a href="https://dev.to/alrifatsabbir" rel="external noopener noreferrer">DEV Community Profile</a>
+                  <a href="https://codepen.io/alrifatsabbir" rel="external noopener noreferrer">CodePen Profile</a>
+                  <a href="https://wa.me/+8801688525596" rel="external noopener noreferrer">Whatsapp</a>
+                </nav>
+
+      </div>
+
+      <div className="text-4xl md:text-5xl font-bold mb-8 border-b pb-4">
         {isBengali ? "গোপনীয়তা নীতি (Privacy Policy)" : "Privacy Policy"}
-      </h1>
+      </div>
+      
       <p className="text-slate-600 mb-10 text-lg italic">
         {isBengali ? 'সর্বশেষ আপডেট' : 'Last updated'}: {new Date().toLocaleDateString(isBengali ? 'bn-BD' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
       </p>
+
       <div className="space-y-8">
         {policyPoints.map((point, index) => (
           <div key={index} className="group transition-all duration-300">

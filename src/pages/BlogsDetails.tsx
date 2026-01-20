@@ -26,6 +26,47 @@ export default function BlogDetails() {
 
   return (
     <div className={`container mx-auto px-4 py-24 max-w-3xl ${isBengali ? 'font-bengali' : 'font-body'}`}>
+      
+      {/* SEO & Semantic Structure */}
+      <div className="sr-only">
+        <nav aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href={`/blogs/${id}`}>{content.title}</a></li>
+          </ol>
+        </nav>
+        <article>
+          <h1>{content.title}</h1>
+          <p>Published by {content.author} on {content.date}</p>
+          <div className="links">
+                  <a href="/templates">All Cover Page Templates</a>
+                  <a href="/editor/assignment">Assignment Cover Page Generator</a>
+                  <a href="/editor/labReport">University Lab Report Cover Page</a>
+                  <a href="/editor/forum">Academic Forum Presentation Cover Page</a>
+                  <a href="/editor/homework">Simple Homework Cover Page</a>
+                  <a href="/contact">Contact Developer</a>
+                  <a href="/privacy">Privacy Policy</a>
+                  <a href="/terms">Terms of Service</a>   
+                  {/* Project & Developer Social Links */}
+                  <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
+                  <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
+                  <a href="https://linkedin.com/in/alrifatsabbir" rel="external noopener noreferrer">LinkedIn Profile</a>
+                  <a href="https://facebook.com/alrifatsabbir1" rel="external noopener noreferrer">Facebook Page</a>
+                  <a href="https://twitter.com/alrifatsabbir" rel="external noopener noreferrer">Twitter / X Profile</a>
+                  <a href="https://instagram.com/alrifatsabbir" rel="external noopener noreferrer">Instagram Profile</a>
+                  <a href="https://behance.net/alrifatsabbir" rel="external noopener noreferrer">Behance Portfolio</a>
+                  <a href="https://stackoverflow.com/users/24326530/alrifatsabbir" rel="external noopener noreferrer">Stack Overflow Profile</a>
+                  <a href="https://dribbble.com/alrifatsabbir" rel="external noopener noreferrer">Dribbble Design Portfolio</a>
+                  <a href="https://youtube.com/@alrifatsabbir" rel="external noopener noreferrer">YouTube Channel</a>
+                  <a href="https://medium.com/@alrifatsabbir" rel="external noopener noreferrer">Medium Blog</a>
+                  <a href="https://dev.to/alrifatsabbir" rel="external noopener noreferrer">DEV Community Profile</a>
+                  <a href="https://codepen.io/alrifatsabbir" rel="external noopener noreferrer">CodePen Profile</a>
+                  <a href="https://wa.me/+8801688525596" rel="external noopener noreferrer">Whatsapp</a>
+          </div>
+        </article>
+      </div>
+
       {/* Back Button */}
       <motion.button 
         initial={{ opacity: 0, x: -10 }}
@@ -48,7 +89,7 @@ export default function BlogDetails() {
         </div>
 
         {/* Blog Main Image */}
-        <div className="w-full h-[300 md:h-[400px] rounded-3xl overflow-hidden mb-12 shadow-xl border border-border">
+        <div className="w-full h-[300px] md:h-[400px] rounded-3xl overflow-hidden mb-12 shadow-xl border border-border">
             <img 
                 src={content.mainImage} 
                 alt={content.title} 
@@ -92,7 +133,7 @@ export default function BlogDetails() {
       {/* CTA Box */}
       <div className="bg-card border border-border rounded-3xl p-8 text-center shadow-sm">
         <h3 className="text-xl font-bold mb-2">
-          {isBengali ? 'আপনার কি কোনো কভার পেজ প্রয়োজন?' : 'Need a Cover Page?'}
+          {isBengali ? 'আপনার কি কোনো কভার পেজ প্রয়োজন?' : 'Need a Cover Page?'}
         </h3>
         <p className="text-muted-foreground mb-6">
           {isBengali ? 'WUB DOX ব্যবহার করে মুহূর্তেই প্রফেশনাল কভার পেজ তৈরি করুন।' : 'Create professional cover pages in seconds using WUB DOX.'}

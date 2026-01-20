@@ -263,6 +263,10 @@ const Editor = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <div className="sr-only">
+        <h1>{isBengali ? `${templateTitle} কভার পেজ অনলাইন এডিটর` : `WUB DOX ${templateTitle} Online Editor`}</h1>
+        <p>Create professional university cover pages for {type}. Free academic tool by Al Rifat Sabbir.</p>
+      </div>
       <main className="pt-20 pb-8 px-4">
         <div className="container mx-auto max-w-7xl">
 

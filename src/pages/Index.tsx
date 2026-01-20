@@ -41,7 +41,7 @@ const Index = () => {
     {
       title: 'Homework',
       titleKey: 'homework',
-      description: isBengali ? 'সাধারণ হোমওয়ার্ক জমা দেওয়ার জন্য' : 'For general homework submissions',
+      description: isBengali ? 'সাধারণ হোমওয়ার্ক জমা দেওয়ার জন্য' : 'For homework submissions',
       icon: PenTool,
       color: 'bg-secondary',
       type: 'homework',
@@ -79,6 +79,43 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="text-center space-y-6"
             >
+              <div className="sr-only">
+                <h1>WUB DOX - {isBengali ? "প্রফেশনাল কভার পেজ জেনারেটর" : "Professional Cover Page Generator"}</h1>
+                <p>
+                  {isBengali 
+                    ? "WUB DOX ব্যবহার করে অ্যাসাইনমেন্ট, ল্যাব রিপোর্ট এবং ফোরামের জন্য দ্রুত কভার পেজ তৈরি করুন। এটি একটি সম্পূর্ণ ফ্রি অনলাইন টুল যা শিক্ষার্থীদের কাজের সুবিধার্থে তৈরি করা হয়েছে।" 
+                    : "WUB DOX is a powerful online tool to generate professional cover pages for assignments, lab reports, forums, and homework. Free to use with no registration required."}
+                </p>
+                <nav className="sr-only">
+                  {/* WUB DOX Internal Links */}
+                  <a href="/">Home</a>
+                  <a href="/templates">All Cover Page Templates</a>
+                  <a href="/editor/assignment">Assignment Cover Page Generator</a>
+                  <a href="/editor/labReport">University Lab Report Cover Page</a>
+                  <a href="/editor/forum">Academic Forum Presentation Cover Page</a>
+                  <a href="/editor/homework">Simple Homework Cover Page</a>
+                  <a href="/blogs">Blogs about WUB DOX</a>
+                  <a href="/contact">Contact Developer</a>
+                  <a href="/privacy">Privacy Policy</a>
+                  <a href="/terms">Terms of Service</a>   
+                  {/* Project & Developer Social Links */}
+                  <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
+                  <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
+                  <a href="https://linkedin.com/in/alrifatsabbir" rel="external noopener noreferrer">LinkedIn Profile</a>
+                  <a href="https://facebook.com/alrifatsabbir1" rel="external noopener noreferrer">Facebook Page</a>
+                  <a href="https://twitter.com/alrifatsabbir" rel="external noopener noreferrer">Twitter / X Profile</a>
+                  <a href="https://instagram.com/alrifatsabbir" rel="external noopener noreferrer">Instagram Profile</a>
+                  <a href="https://behance.net/alrifatsabbir" rel="external noopener noreferrer">Behance Portfolio</a>
+                  <a href="https://stackoverflow.com/users/24326530/alrifatsabbir" rel="external noopener noreferrer">Stack Overflow Profile</a>
+                  <a href="https://dribbble.com/alrifatsabbir" rel="external noopener noreferrer">Dribbble Design Portfolio</a>
+                  <a href="https://youtube.com/@alrifatsabbir" rel="external noopener noreferrer">YouTube Channel</a>
+                  <a href="https://medium.com/@alrifatsabbir" rel="external noopener noreferrer">Medium Blog</a>
+                  <a href="https://dev.to/alrifatsabbir" rel="external noopener noreferrer">DEV Community Profile</a>
+                  <a href="https://codepen.io/alrifatsabbir" rel="external noopener noreferrer">CodePen Profile</a>
+                  <a href="https://wa.me/+8801688525596" rel="external noopener noreferrer">Whatsapp</a>
+                </nav>
+              </div>
+
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -91,20 +128,20 @@ const Index = () => {
                 </span>
               </motion.div>
 
-<h1 className={`text-5xl sm:text-5xl md:text-7xl font-display font-bold text-white leading-tight w-full flex flex-col items-center ${isBengali ? 'font-bengali' : ''}`}>
-  <div className="w-full flex justify-center">
-    <GradientText colors={["#fbbf24", "#f59e0b", "#d97706", "#fbbf24"]} className="text-center">
-      WUB DOX
-    </GradientText>
-  </div>
-  <div className="w-full mt-2 sm:mt-0 flex justify-center">
-    <BlurText 
-      text={isBengali ? "কভার পেজ জেনারেটর" : "Cover Page Generator"} 
-      delay={150} 
-      className="justify-center text-center"
-    />
-  </div>
-</h1>
+              <div className={`text-5xl sm:text-5xl md:text-7xl font-display font-bold text-white leading-tight w-full flex flex-col items-center ${isBengali ? 'font-bengali' : ''}`}>
+                <div className="w-full flex justify-center">
+                  <GradientText colors={["#fbbf24", "#f59e0b", "#d97706", "#fbbf24"]} className="text-center">
+                    WUB DOX
+                  </GradientText>
+                </div>
+                <div className="w-full mt-2 sm:mt-0 flex justify-center">
+                  <BlurText 
+                    text={isBengali ? "প্রফেশনাল কভার পেজ জেনারেটর" : "Professional Cover Page Generator"} 
+                    delay={150} 
+                    className="justify-center text-center"
+                  />
+                </div>
+              </div>
 
               <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-medium">
                 {t('heroSubtitle')}

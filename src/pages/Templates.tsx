@@ -43,18 +43,46 @@ const Templates = () => {
       color: 'bg-secondary',
       type: 'homework',
     },
-    // {
-    //   title: 'Index',
-    //   titleKey: 'index',
-    //   description: isBengali ? 'কয়েক মিনিটের মধ্যে যেকোনো ইনডেক্স তৈরি করুন।' : 'Create any index in minutes.',
-    //   icon: FileSearchIcon,
-    //   color: 'bg-secondary',
-    //   type: 'homework',
-    // },
   ];
 
   return (
     <div className="min-h-screen bg-background">
+      <div className="sr-only">
+        <h1>WUB DOX Templates - {isBengali ? "সবগুলো কভার পেজ টেমপ্লেট" : "All Cover Page Templates"}</h1>
+        <p>
+          {isBengali 
+            ? "আপনার অ্যাসাইনমেন্ট, ল্যাব রিপোর্ট এবং প্রেজেন্টেশনের জন্য সেরা প্রফেশনাল টেমপ্লেট বেছে নিন। WUB DOX আপনাকে দিচ্ছে একদম ফ্রি কভার পেজ জেনারেটর সুবিধা।" 
+            : "Explore our collection of professional cover page templates for university assignments, laboratory reports, and academic forums. Fast, free, and easy to use."}
+        </p>
+                <nav className="sr-only">
+                  {/* WUB DOX Internal Links */}
+                  <a href="/">Home</a>
+                  <a href="/editor/assignment">Assignment Cover Page Generator</a>
+                  <a href="/editor/labReport">University Lab Report Cover Page</a>
+                  <a href="/editor/forum">Academic Forum Presentation Cover Page</a>
+                  <a href="/editor/homework">Simple Homework Cover Page</a>
+                  <a href="/blogs">Blogs about WUB DOX</a>
+                  <a href="/contact">Contact Developer</a>
+                  <a href="/privacy">Privacy Policy</a>
+                  <a href="/terms">Terms of Service</a>   
+                  {/* Project & Developer Social Links */}
+                  <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
+                  <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
+                  <a href="https://linkedin.com/in/alrifatsabbir" rel="external noopener noreferrer">LinkedIn Profile</a>
+                  <a href="https://facebook.com/alrifatsabbir1" rel="external noopener noreferrer">Facebook Page</a>
+                  <a href="https://twitter.com/alrifatsabbir" rel="external noopener noreferrer">Twitter / X Profile</a>
+                  <a href="https://instagram.com/alrifatsabbir" rel="external noopener noreferrer">Instagram Profile</a>
+                  <a href="https://behance.net/alrifatsabbir" rel="external noopener noreferrer">Behance Portfolio</a>
+                  <a href="https://stackoverflow.com/users/24326530/alrifatsabbir" rel="external noopener noreferrer">Stack Overflow Profile</a>
+                  <a href="https://dribbble.com/alrifatsabbir" rel="external noopener noreferrer">Dribbble Design Portfolio</a>
+                  <a href="https://youtube.com/@alrifatsabbir" rel="external noopener noreferrer">YouTube Channel</a>
+                  <a href="https://medium.com/@alrifatsabbir" rel="external noopener noreferrer">Medium Blog</a>
+                  <a href="https://dev.to/alrifatsabbir" rel="external noopener noreferrer">DEV Community Profile</a>
+                  <a href="https://codepen.io/alrifatsabbir" rel="external noopener noreferrer">CodePen Profile</a>
+                  <a href="https://wa.me/+8801688525596" rel="external noopener noreferrer">Whatsapp</a>
+                </nav>
+      </div>
+
       <main className="pt-24 pb-12 px-4">
         <div className="container mx-auto max-w-6xl">
           <motion.div
@@ -62,9 +90,9 @@ const Templates = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h1 className={`text-3xl md:text-4xl font-display font-bold text-foreground mb-4 ${isBengali ? 'font-bengali' : ''}`}>
+            <div className={`text-3xl md:text-4xl font-display font-bold text-foreground mb-4 ${isBengali ? 'font-bengali' : ''}`}>
               {t('selectTemplate')}
-            </h1>
+            </div>
             <p className={`text-muted-foreground ${isBengali ? 'font-bengali' : ''}`}>
               {isBengali ? 'আপনার প্রয়োজন অনুযায়ী একটি টেমপ্লেট নির্বাচন করুন' : 'Choose a template that fits your needs'}
             </p>

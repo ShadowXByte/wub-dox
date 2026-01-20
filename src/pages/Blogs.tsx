@@ -45,26 +45,66 @@ export default function Blogs() {
       id: 4,
       title: isBengali ? "WUB DOX-এর পেছনের গল্প" : "The Beginning of WUB DOX",
       excerpt: isBengali 
-        ? "একটি ল্যাব এক্সাম, এক কাপ চা আর একটি আইডিয়া—কিভাবে শুরু হলো WUB DOX?" 
+        ? "একটি ল্যাব এক্সাম, এক কাপ চা আর একটি আইডিয়া—কিভাবে শুরু হলো WUB DOX?" 
         : "One lab exam, a cup of tea, and a vision—how WUB DOX came to life.",
       author: "Admin",
       date: "Jan 01, 2026",
       category: isBengali ? "গল্প" : "Story",
       image: "https://images.unsplash.com/photo-1632594737623-bea601083890?q=80&w=870&auto=format&fit=crop"
-}
+    }
   ];
 
   return (
     <div className={`container mx-auto px-4 py-24 max-w-6xl ${isBengali ? 'font-bengali' : 'font-body'}`}>
+      
+      {/* SEO Hidden Section */}
+      <div className="sr-only">
+        <h1>WUB DOX Blog - {isBengali ? "একাডেমিক টিপস এবং আপডেট" : "Academic Tips & Updates"}</h1>
+        <p>
+          {isBengali 
+            ? "শিক্ষার্থীদের জন্য অ্যাসাইনমেন্ট কভার পেজ তৈরি, ল্যাব রিপোর্ট ফরম্যাটিং এবং একাডেমিক রাইটিং নিয়ে গুরুত্বপূর্ণ ব্লগ ও টিপস।" 
+            : "Read the latest blogs on assignment cover page creation, lab report formatting, and academic writing tips for university students."}
+        </p>
+        <nav>
+          {blogPosts.map(post => (
+            <a key={post.id} href={`/blogs/${post.id}`}>{post.title}</a>
+          ))}
+                  <a href="/">Home</a>
+                  <a href="/templates">All Cover Page Templates</a>
+                  <a href="/editor/assignment">Assignment Cover Page Generator</a>
+                  <a href="/editor/labReport">University Lab Report Cover Page</a>
+                  <a href="/editor/forum">Academic Forum Presentation Cover Page</a>
+                  <a href="/editor/homework">Simple Homework Cover Page</a>
+                  <a href="/contact">Contact Developer</a>
+                  <a href="/privacy">Privacy Policy</a>
+                  <a href="/terms">Terms of Service</a>   
+                  {/* Project & Developer Social Links */}
+                  <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
+                  <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
+                  <a href="https://linkedin.com/in/alrifatsabbir" rel="external noopener noreferrer">LinkedIn Profile</a>
+                  <a href="https://facebook.com/alrifatsabbir1" rel="external noopener noreferrer">Facebook Page</a>
+                  <a href="https://twitter.com/alrifatsabbir" rel="external noopener noreferrer">Twitter / X Profile</a>
+                  <a href="https://instagram.com/alrifatsabbir" rel="external noopener noreferrer">Instagram Profile</a>
+                  <a href="https://behance.net/alrifatsabbir" rel="external noopener noreferrer">Behance Portfolio</a>
+                  <a href="https://stackoverflow.com/users/24326530/alrifatsabbir" rel="external noopener noreferrer">Stack Overflow Profile</a>
+                  <a href="https://dribbble.com/alrifatsabbir" rel="external noopener noreferrer">Dribbble Design Portfolio</a>
+                  <a href="https://youtube.com/@alrifatsabbir" rel="external noopener noreferrer">YouTube Channel</a>
+                  <a href="https://medium.com/@alrifatsabbir" rel="external noopener noreferrer">Medium Blog</a>
+                  <a href="https://dev.to/alrifatsabbir" rel="external noopener noreferrer">DEV Community Profile</a>
+                  <a href="https://codepen.io/alrifatsabbir" rel="external noopener noreferrer">CodePen Profile</a>
+                  <a href="https://wa.me/+8801688525596" rel="external noopener noreferrer">Whatsapp</a>
+        </nav>
+      </div>
+
       {/* Header Section */}
       <div className="text-center mb-16">
-        <motion.h1 
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
         >
           {isBengali ? "আমাদের ব্লগ" : "Our Blogs"}
-        </motion.h1>
+        </motion.div>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
