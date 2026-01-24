@@ -3,18 +3,18 @@
   "name": "WUB DOX - Cover Page Generator",
   "icons": [
     {
-      "src": "/wub-dox-fav.png",
+      "src": "/wub-dox1.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
     },
     {
-      "src": "/wub_dox_social.png",
+      "src": "/wub_dox_1.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/wub_dox_social.png",
+      "src": "/wub_dox_1.png",
       "type": "image/png",
       "sizes": "512x512"
     }
