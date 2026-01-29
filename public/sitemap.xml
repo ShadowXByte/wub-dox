@@ -66,6 +66,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://wub-dox.vercel.app/blogs/5</loc>
+    <lastmod>2026-01-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://wub-dox.vercel.app/contact</loc>
     <lastmod>2026-01-21</lastmod>
     <priority>0.5</priority>
