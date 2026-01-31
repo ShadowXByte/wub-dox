@@ -14,9 +14,11 @@ const ForumTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, style =
   const faculty = faculties.find((f) => f.key === data.facultyName);
   const department = departments.find((d) => d.key === data.departmentName);
   const designation = designations.find((d) => d.key === data.teacherDesignation);
+  const stdDepartment = departments.find((d) => d.key === data.studentDept);
 
   const facultyName = isBengali ? faculty?.bn : faculty?.en;
   const departmentName = isBengali ? department?.bn : department?.en;
+  const studentDept = isBengali ? stdDepartment?.bn : stdDepartment?.en;
   const designationName = isBengali ? designation?.bn : designation?.en || data.teacherDesignation;
 
   if (style === 2) {
@@ -31,7 +33,7 @@ const ForumTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, style =
           
           <div className="text-center space-y-3 mb-6 pt-4">
             <img src="/wub.png" alt="wub-logo" />
-            <h2 className="text-xl text-[#718096]">{departmentName}</h2>
+            <h2 className="text-xl text-[#718096]">{studentDept}</h2>
           </div>
 
           <div className="flex items-center justify-center gap-3 my-4">
@@ -110,7 +112,7 @@ const ForumTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, style =
                   {data.universityName}
                 </h1>
               </div>
-              <p className="text-xl text-[#718096]">{departmentName}</p>
+              <p className="text-xl text-[#718096]">{studentDept}</p>
             </div>
 
             <div className="text-center space-y-4 my-4">
@@ -184,7 +186,7 @@ const ForumTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, style =
           <div className="inline-flex flex-col items-center gap-2 mb-12">
             <img src="/wub_logo_j.png" alt="wub-logo" className="w-40"/>
             <img src="/wub-name.png" alt="logo-name" className="h-20" />
-            <p className="text-xl text-[#2d3748]">{departmentName}</p>
+            <p className="text-xl text-[#2d3748]">{studentDept}</p>
           </div>
 
             <p className="text-3xl text-center uppercase font-semibold text-[#2d3748] mb-5">
@@ -247,7 +249,7 @@ const ForumTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, style =
       <div className="cover-page-border h-full p-8 flex flex-col">
         <div className="justify-center flex flex-col space-y-2 mb-8">
           <img src="/wub.png" alt="wub-logo"/>
-          <h2 className="text-center text-xl text-[#718096]">{departmentName}</h2>
+          <h2 className="text-center text-xl text-[#718096]">{studentDept}</h2>
         </div>
 
         <div className="flex items-center gap-4 my-6">

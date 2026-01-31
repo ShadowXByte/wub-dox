@@ -17,6 +17,7 @@ import {
   semesters,
   sections,
   getTeachersForDepartment,
+  allDepartments,
 } from '@/lib/storage';
 
 interface CoverPageEditorProps {
@@ -209,6 +210,7 @@ const CoverPageEditor = ({ data, onChange, templateType }: CoverPageEditorProps)
         <h3 className="font-semibold">{t('submittedBy')}</h3>
         {renderField(t('studentName'), 'studentName')}
         {renderField(t('studentId'), 'studentId')}
+        {renderField(t('studentDept'),'studentDept', 'select', allDepartments.map(d => ({ value: d.key, label: isBengali ? d.bn : d.en})))}
         {renderField(t('Roll'),'roll')}
         {renderField(t('Batch (E.g. A,B,C,D....)'), 'section', 'select', sections.map(s => ({ value: s, label: s })))}
         {renderField(t('semester'), 'semester', 'select', semesters.map(s => ({ value: s, label: s })))}
@@ -234,9 +236,9 @@ const CoverPageEditor = ({ data, onChange, templateType }: CoverPageEditorProps)
 
       <div className="p-4 rounded-xl bg-muted/30 border space-y-4">
         <h3 className="font-semibold">{isBengali ? 'তারিখ' : 'Dates'}</h3>
-        {renderField(t('submissionDate'), 'submissionDate', 'date')}
         {templateType === 'labReport' &&
           renderField(t('experimentDate'), 'experimentDate', 'date')}
+        {renderField(t('submissionDate'), 'submissionDate', 'date')}
       </div>
     </div>
   );

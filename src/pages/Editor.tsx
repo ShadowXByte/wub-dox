@@ -293,7 +293,7 @@ const Editor = () => {
               <Button
                 id="download-btn"
                 size="sm"
-                className="flex-1 md:flex-none md:hidden"
+                className="flex-1 md:flex-none "
                 onClick={handleDownload}
                 disabled={isDownloading}
               >

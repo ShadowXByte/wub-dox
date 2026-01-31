@@ -42,6 +42,7 @@ const resources = {
       submittedTo: "Submitted To",
       studentName: "Student Name",
       studentId: "Student ID",
+      studentDept: "Student Department",
       section: "Section",
       semester: "Semester",
       session: "Session",

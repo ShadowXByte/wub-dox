@@ -12,6 +12,7 @@ export interface CoverPageData {
   topicName: string;
   studentName: string;
   studentId: string;
+  studentDept: string;
   section: string;
   semester: string;
   batch: string;
@@ -45,6 +46,7 @@ export const defaultCoverPageData: CoverPageData = {
   topicName: "",
   studentName: "",
   studentId: "",
+  studentDept: "cse",
   section: "C",
   semester: "",
   batch: "69",
@@ -107,9 +109,29 @@ export const departmentsByFaculty: Record<string, { key: string; en: string; bn:
   ],
   facultyOfBusiness: [
     { key: 'bba', en: 'Department of Business Administration', bn: 'ব্যবসায় প্রশাসন বিভাগ' },
-    { key: 'bhtm', en: 'Department of Tourism and Hospitality Management', bn: 'পর্যটন ও আতিথেয়তা ব্যবস্থাপনা বিভাগ' },
+    { key: 'thm', en: 'Department of Tourism and Hospitality Management', bn: 'পর্যটন ও আতিথেয়তা ব্যবস্থাপনা বিভাগ' },
   ],
 };
+
+// Departments for student
+export const allDepartments = [
+    { key: 'cse', en: 'Department of Computer Science and Engineering', bn: 'কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ' },
+    { key: 'eee', en: 'Department of Electrical and Electronic Engineering', bn: 'ইলেকট্রিক্যাল এন্ড ইলেকট্রনিক ইঞ্জিনিয়ারিং বিভাগ' },
+    { key: 'textile', en: 'Department of Textile Engineering', bn: 'টেক্সটাইল ইঞ্জিনিয়ারিং বিভাগ' },
+    { key: 'civil', en: 'Department of Civil Engineering', bn: 'সিভিল ইঞ্জিনিয়ারিং বিভাগ' },
+    { key: 'mechatronics', en: 'Department of Mechatronics Engineering', bn: 'মেকাট্রনিক্স ইঞ্জিনিয়ারিং বিভাগ' },
+    { key: 'architecture', en: 'Department of Architecture', bn: 'আর্কিটেকচার বিভাগ' },
+    { key: 'biomedical', en: 'Department of Biomedical Science and Engineering', bn: 'বায়োমেডিকাল বিজ্ঞান ও প্রকৌশল বিভাগ' },
+    { key: 'pharmacy', en: 'Department of Pharmacy', bn: 'ফার্মেসি বিভাগ' },
+    { key: 'basicScience', en: 'Basic Science Division', bn: 'মৌলিক বিজ্ঞান বিভাগ' },
+    { key: 'english', en: 'Department of English', bn: 'ইংরেজি বিভাগ' },
+    { key: 'bed', en: 'Department of Bachelor of Education', bn: 'ব্যাচেলর অব এডুকেশন বিভাগ' },
+    { key: 'journalism', en: 'Department of Journalism and Media Studies', bn: 'জার্নালিজম এন্ড মিডিয়া স্টাডিজ বিভাগ' },
+    { key: 'law', en: 'Department of Law', bn: 'আইন বিভাগ' },
+    { key: 'bba', en: 'Department of Business Administration', bn: 'ব্যবসায় প্রশাসন বিভাগ' },
+    { key: 'thm', en: 'Department of Tourism and Hospitality Management', bn: 'পর্যটন ও আতিথেয়তা ব্যবস্থাপনা বিভাগ' },
+];
+
 
 // Get all departments flat
 export const departments = Object.values(departmentsByFaculty).flat();
@@ -297,7 +319,7 @@ export const teachersByDepartment: Record<string, { name: string; designation: s
     { name: 'Md. Amith', designation: 'lecturer' },
     { name: 'Sakila Sultana', designation: 'lecturer' },
   ],
-  bhtm: [
+  thm: [
     { name: 'Mohammad Nasimul Azim', designation: 'professor' },
     { name: 'Md. Abdul Latif Mahmud', designation: 'assistantProfessor' },
     { name: 'Pulak Sarker', designation: 'lecturer' },

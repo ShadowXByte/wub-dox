@@ -13,11 +13,13 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
 
   const faculty = faculties.find((f) => f.key === data.facultyName);
   const department = departments.find((d) => d.key === data.departmentName);
+  const stdDepartment = departments.find((d) => d.key === data.studentDept);
   const designation = designations.find((d) => d.key === data.teacherDesignation);
 
   const facultyName = isBengali ? faculty?.bn : faculty?.en;
   const departmentName = isBengali ? department?.bn : department?.en;
   const designationName = isBengali ? designation?.bn : designation?.en || data.teacherDesignation;
+  const studentDept = isBengali ? stdDepartment?.bn : stdDepartment?.en;
 
   if (style === 2) {
     return (
@@ -34,7 +36,7 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
           <div className="text-center space-y-3 mb-6 pt-4">
             <img src="/wub.png" alt="wub-logo" />
             {/* <p className="text-base text-[#2d3748]">{facultyName}</p> */}
-            <h2 className="text-xl text-[#718096]">{departmentName}</h2>
+            <h2 className="text-xl text-[#718096]">{studentDept}</h2>
           </div>
 
           {/* Decorative divider */}
@@ -125,7 +127,7 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
                 </h1>
               </div>
               {/* <p className="text-base text-[#4a5568]">{facultyName}</p> */}
-              <p className="text-lg text-[#718096]">{departmentName}</p>
+              <p className="text-lg text-[#718096]">{studentDept}</p>
             </div>
 
         {/* Assignment Info */}
@@ -208,7 +210,7 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
           <div className="inline-flex flex-col items-center gap-2 mb-12">
             <img src="/wub_logo_j.png" alt="wub-logo" className="w-40"/>
             <img src="/wub-name.png" alt="logo-name" className="h-20" />
-            <p className="text-xl text-[#2d3748]">{departmentName}</p>
+            <p className="text-xl text-[#2d3748]">{studentDept}</p>
           </div>
 
           {/* Large assignment number */}
@@ -274,7 +276,7 @@ const AssignmentTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, st
         <div className="justify-center flex flex-col space-y-2 mb-8">
               <img src="/wub.png" alt="wub-logo"/>
           {/* <p className="text-lg text-[#4a5568]">{facultyName}</p> */}
-          <h2 className="text-center text-xl text-[#718096]">{departmentName}</h2>
+          <h2 className="text-center text-xl text-[#718096]">{studentDept}</h2>
         </div>
 
         {/* Divider */}

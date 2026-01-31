@@ -14,9 +14,11 @@ const LabReportTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, sty
   const faculty = faculties.find((f) => f.key === data.facultyName);
   const department = departments.find((d) => d.key === data.departmentName);
   const designation = designations.find((d) => d.key === data.teacherDesignation);
+  const stdDepartment = departments.find((d) => d.key === data.studentDept);
 
   const facultyName = isBengali ? faculty?.bn : faculty?.en;
   const departmentName = isBengali ? department?.bn : department?.en;
+  const studentDept = isBengali ? stdDepartment?.bn : stdDepartment?.en;
   const designationName = isBengali ? designation?.bn : designation?.en || data.teacherDesignation;
 
   // --- STYLE 2 (Border & Gradient) ---
@@ -27,7 +29,7 @@ const LabReportTemplate = forwardRef<HTMLDivElement, TemplateProps>(({ data, sty
           <div className="absolute top-4 left-4 right-4 h-1 bg-gradient-to-r from-transparent via-[#d69e2e] to-transparent" />
           <div className="text-center space-y-3 mb-6 pt-4">
             <img src="/wub.png" alt="wub-logo" />
-            <h2 className="text-xl text-[#718096]">{departmentName}</h2>
+            <h2 className="text-xl text-[#718096]">{studentDept}</h2>
           </div>
           <div className="flex items-center justify-center gap-3 my-4">
             <div className="flex-1 h-px bg-[#d69e2e]" />
@@ -96,7 +98,7 @@ return (
                   {data.universityName}
                 </h1>
               </div>
-              <p className="text-lg text-[#718096]">{departmentName}</p>
+              <p className="text-lg text-[#718096]">{studentDept}</p>
             </div>
 
         {/* Experiment Info */}
@@ -182,7 +184,7 @@ return (
           <div className="inline-flex flex-col items-center gap-2 mb-12">
             <img src="/wub_logo_j.png" alt="wub-logo" className="w-40"/>
             <img src="/wub-name.png" alt="logo-name" className="h-20" />
-            <p className="text-xl text-[#2d3748]">{departmentName}</p>
+            <p className="text-xl text-[#2d3748]">{studentDept}</p>
           </div>
           <div className="flex-1 space-y-6">
             <div>
@@ -227,7 +229,7 @@ return (
       <div className="cover-page-border h-full p-8 flex flex-col">
         <div className="justify-center flex flex-col space-y-2 mb-8">
           <img src="/wub.png" alt="wub-logo" />
-          <h2 className="text-center text-xl text-[#718096]">{departmentName}</h2>
+          <h2 className="text-center text-xl text-[#718096]">{studentDept}</h2>
         </div>
         <div className="flex items-center gap-4 my-6">
           <div className="flex-1 h-px bg-[#1a365d]/30" />
