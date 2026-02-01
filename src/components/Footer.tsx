@@ -29,7 +29,7 @@ const Footer = () => {
       links: [
         { name: isBengali ? 'গোপনীয়তা নীতি' : 'Privacy Policy', path: '/privacy' },
         { name: isBengali ? 'শর্তাবলী' : 'Terms of Service', path: '/terms' },
-        { name: isBengali ? 'লাইসেন্স' : 'License', path: '/license' },
+        { name: isBengali ? 'লাইসেন্স' : 'License', path: '/licenses' },
       ]
     }
   ];

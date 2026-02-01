@@ -416,6 +416,10 @@ export const teachersByDepartment: Record<string, { name: string; designation: s
     { name: 'Mahmuda Rahman Deeba', designation: 'lecturerInStatistics'},
     { name: 'Md. Khalil Islam', designation: 'lecturerInMath'},
     { name: 'Shamima Akther', designation: 'lecturerInBengali'},
+    { name: 'Shafiul Islam', designation: 'lecturerInPhysics'},
+    { name: 'Md Alamin', designation: 'lecturer'},
+    { name: 'Jotsona Akter', designation: 'lecturerInStatistics'},
+    { name: 'Afsana Akter Mitu', designation: 'lecturerInMath'},
   ]
 };
 

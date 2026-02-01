@@ -19,6 +19,7 @@ import License from "./pages/License";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Loader from "./components/Loader"; 
+import Modal from "./components/AccptanceModal"
 import "./lib/i18n";
 
 const queryClient = new QueryClient();
@@ -77,6 +78,7 @@ const App = () => {
           <ScrollToTop /> 
           <Header />
           <main className="min-h-screen">
+            <Modal/>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/templates" element={<Templates />} />
@@ -86,7 +88,7 @@ const App = () => {
               <Route path="/blogs/:id" element={<BlogsDetails />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
-              <Route path="/license" element={<License />} />
+              <Route path="/licenses" element={<License />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
