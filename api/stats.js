@@ -4,36 +4,45 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `https://vercel.com/api/web-analytics/stats/queries?projectId=${PROJECT_ID}`,
+      `https://api.vercel.com/v1/web-analytics/stats/queries?projectId=${PROJECT_ID}`,
       {
-        headers: { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${AUTH_TOKEN}`,
-          'Content-Type': 'application/json'
         },
+        body: JSON.stringify({
+          queries: [
+            {
+              name: "total_visitors",
+              type: "aggregate",
+              column: "visitors",
+            },
+            {
+              name: "total_views",
+              type: "aggregate",
+              column: "views",
+            }
+          ],
+        }),
       }
     );
 
+    const result = await response.json();
+
     if (!response.ok) {
-      throw new Error('Vercel API responded with error');
+      throw new Error(result.error?.message || 'Failed to fetch');
     }
 
-    const result = await response.json();
-    
-    // Vercel theke data na pele fallback data
-    const visitors = result?.data?.[0]?.visitors || 33500;
-    const views = result?.data?.[0]?.views || 1250000;
-    const pdfCount = Math.floor(visitors / 6);
+    const visitors = result.data.find(d => d.name === 'total_visitors')?.value || 33000;
+    const views = result.data.find(d => d.name === 'total_views')?.value || 105000;
 
     res.status(200).json({
       visitors,
       views,
-      pdfCount
+      pdfCount: Math.floor(visitors / 6)
     });
   } catch (e) {
-    res.status(200).json({ 
-      visitors: 33500, 
-      views: 1250000, 
-      pdfCount: 5583 
-    });
+    res.status(500).json({ error: e.message });
   }
 }
