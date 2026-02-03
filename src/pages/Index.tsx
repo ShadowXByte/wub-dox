@@ -7,7 +7,6 @@ import BlurText from '@/components/animations/BlurText';
 import GradientText from '@/components/animations/GradientText';
 import ShinyButton from '@/components/animations/ShinyButton';
 import LightRays from '@/components/LightRays';
-import VercelStats from '@/components/VercelStats';
 import { useState, useEffect } from 'react';
 
 const Index = () => {
@@ -201,9 +200,6 @@ const Index = () => {
               </motion.div>
             </motion.div>
           </div>
-        </section>
-        <section>
-          <VercelStats isBengali={isBengali} />
         </section>
         <section className="py-20 px-4 min-h-screen bg-black/20 backdrop-blur-md border-t border-white/5">
           <div className="container mx-auto max-w-6xl">
