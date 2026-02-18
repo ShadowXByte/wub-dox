@@ -19,7 +19,6 @@ import HomeworkTemplate from '@/components/templates/HomeworkTemplate';
 
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-
 import {
   CoverPageData,
   defaultCoverPageData,

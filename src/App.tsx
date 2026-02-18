@@ -21,6 +21,7 @@ import Header from "./components/Header";
 import Loader from "./components/Loader"; 
 import Modal from "./components/AccptanceModal"
 import "./lib/i18n";
+import AboutUs from "./pages/AboutUs";
 
 const queryClient = new QueryClient();
 
@@ -83,6 +84,7 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/templates" element={<Templates />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<AboutUs/>}/>
               <Route path="/editor/:type" element={<Editor />} />
               <Route path="/blogs" element={<Blogs/>}/>
               <Route path="/blogs/:id" element={<BlogsDetails />} />

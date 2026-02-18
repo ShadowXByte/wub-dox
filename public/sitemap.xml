@@ -2,95 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://wub-dox.vercel.app/</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
 
   <url>
+    <loc>https://wub-dox.vercel.app/about</loc>
+    <lastmod>2026-02-19</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
     <loc>https://wub-dox.vercel.app/templates</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/editor/assignment</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/editor/labReport</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/editor/forum</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/editor/homework</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/blogs</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/blogs/1</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://wub-dox.vercel.app/blogs/2</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://wub-dox.vercel.app/blogs/3</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://wub-dox.vercel.app/blogs/4</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://wub-dox.vercel.app/blogs/5</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://wub-dox.vercel.app/contact</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/privacy</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/terms</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://wub-dox.vercel.app/license</loc>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <priority>0.2</priority>
   </url>
 </urlset>

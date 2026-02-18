@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Home, Github, Linkedin, HelpCircle, Phone, Menu, X, FilePen} from 'lucide-react';
+import { FileText, Home, Github, Linkedin, HelpCircle, Phone, Users, Menu, X, FilePen} from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 import { Button } from './ui/button';
 
@@ -22,6 +22,7 @@ const Header = () => {
   const navItems = [
     { path: '/', label: t('home'), icon: Home, id: 'home-link' },
     { path: '/templates', label: t('templates'), icon: FileText, id: 'templates-link' },
+    { path: '/about', label: t('about'), icon: Users, id: 'about-link' },
     { path: '/contact', label: t('Contact'), icon: Phone, id: 'contact-link' },
     { path: '/blogs', label: t('blogs'), icon: FilePen, id: 'blogs-link'}
   ];

@@ -8,6 +8,7 @@ import GradientText from '@/components/animations/GradientText';
 import ShinyButton from '@/components/animations/ShinyButton';
 import LightRays from '@/components/LightRays';
 import { useState, useEffect } from 'react';
+import AboutSection from '@/components/AboutSection';
 
 const Index = () => {
   const { t, i18n } = useTranslation();
@@ -110,7 +111,8 @@ const Index = () => {
                   <a href="/blogs">Blogs about WUB DOX</a>
                   <a href="/contact">Contact Developer</a>
                   <a href="/privacy">Privacy Policy</a>
-                  <a href="/terms">Terms of Service</a>   
+                  <a href="/terms">Terms of Service</a>  
+                  <a href="/about">About Us</a> 
                   {/* Project & Developer Social Links */}
                   <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
                   <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
@@ -200,6 +202,9 @@ const Index = () => {
               </motion.div>
             </motion.div>
           </div>
+        </section>
+        <section className="min-h-screen bg-black/20 backdrop-blur-md border-t border-white/5">
+            <AboutSection/>
         </section>
         <section className="py-20 px-4 min-h-screen bg-black/20 backdrop-blur-md border-t border-white/5">
           <div className="container mx-auto max-w-6xl">

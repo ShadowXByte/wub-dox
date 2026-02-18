@@ -192,6 +192,8 @@ export const teachersByDepartment: Record<string, { name: string; designation: s
     { name: 'Syeda Jannatul Naim', designation: 'lecturer'},
     { name: 'Sifat Moonjerin', designation: 'lecturer'},
     { name: 'Md. Raihanul Haque', designation: 'lecturer'},
+    { name: 'Zannatul Fardaush Tripty', designation: 'lecturer'},
+    { name: 'Nusrat Jahan', designation: 'lecturer'},
     { name: 'Musfique-us-Salehin Arnob', designation: 'graduateAssistant'},
   ],
   eee: [
@@ -217,6 +219,7 @@ export const teachersByDepartment: Record<string, { name: string; designation: s
     { name: 'Badhon Baria', designation: 'lecturer' },
     { name: 'Md. Riazur Rahman', designation: 'lecturer' },
     { name: 'Md. Ariful Hossain Faisal', designation: 'lecturer' },
+    { name: 'Syeda Sadia Afrin', designation: 'lecturer' },
   ],
   civil: [
     { name: 'Sagor Kumar Podder', designation: 'assistantProfessor' },
@@ -259,6 +262,7 @@ export const teachersByDepartment: Record<string, { name: string; designation: s
     { name: 'Nahiyan Al-Azad', designation: 'assistantProfessor' },
     { name: 'Tarazul Mulk Syed Anzam Hossain', designation: 'seniorLecturer' },
     { name: 'Ahmed Farhan', designation: 'seniorLecturer' },
+    { name: 'Mahmudul Firoz', designation: 'seniorLecturer' },
     { name: 'Md. Sadatuzzaman Saagoto', designation: 'lecturer' },
     { name: 'Protik Barua', designation: 'lecturer' },
     { name: 'Md Shariful Islam', designation: 'lecturer' },
@@ -362,6 +366,8 @@ export const teachersByDepartment: Record<string, { name: string; designation: s
     { name: 'Sushmita Chakraborty Mishu', designation:'lecturer'},
     { name: 'Israt Jahan', designation:'lecturer'},
     { name: 'Mir Hasib Mahmud', designation:'lecturer'},
+    { name: 'Shakil Reja Efti', designation:'lecturer'},
+
   ],
   law: [
     { name: 'Professor Dr. Md. Abdul Jalil', designation: 'professor' },

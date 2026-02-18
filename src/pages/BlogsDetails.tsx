@@ -48,6 +48,7 @@ export default function BlogDetails() {
                   <a href="/contact">Contact Developer</a>
                   <a href="/privacy">Privacy Policy</a>
                   <a href="/terms">Terms of Service</a>   
+                  <a href="/about">About Us</a> 
                   {/* Project & Developer Social Links */}
                   <a href="https://github.com/alrifatsabbir/wub-dox" rel="external noopener noreferrer">View Source on GitHub</a>
                   <a href="https://github.com/alrifatsabbir" rel="external noopener noreferrer">Developer GitHub Profile</a>
